@@ -219,39 +219,55 @@ body {
             @include portrait-phones {
 
                 grid-template-columns: 1fr 1fr;
-                grid-auto-rows: fit-content;
-                
+                grid-auto-rows: 100px;
+
                 :first-child {
                     grid-column: span 2;
+                    grid-row: span 5;
+
                 }
+
+                :not(first-child) {
+                    grid-column: span 1;
+                    grid-row: span 4;
+                }
+
+
 
             }
 
             @include laptops {
 
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-auto-rows: 100px;
 
                 :first-child {
+                    grid-column: span 2;
+                    grid-row: span 6;
 
-                    grid-column-start: 1;
-                    grid-column-end: 3;
-                    grid-row-start: 1;
-                    grid-row-end: 3;
+                }
 
+                :not(first-child) {
+                    grid-column: span 1;
+                    grid-row: span 3;
                 }
 
             }
 
             @include large-devices {
 
-                grid-template-columns: auto auto auto;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-auto-rows: 100px;
 
                 :first-child {
-                    grid-column-start: 1;
-                    grid-column-end: 3;
-                    grid-row-start: 1;
-                    grid-row-end: 3;
+                    grid-column: span 2;
+                    grid-row: span 6;
 
+                }
+
+                :not(first-child) {
+                    grid-column: span 1;
+                    grid-row: span 3;
                 }
 
             }
@@ -288,14 +304,14 @@ body {
     max-height: fit-content;
     gap: 10px;
 
-    .img {
+    img {
         background-color: gray;
-        min-height: 60%;
     }
 
     .text {
 
         overflow: hidden;
+        min-height: 120px;
 
         h2 {
             margin: 0px;
