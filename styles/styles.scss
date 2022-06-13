@@ -33,18 +33,6 @@ $content-padding: 30px;
     @media screen and (min-width: 1200px) { @content; }
 }
 
-@mixin Button($theme-name, $bg, $font) {
-    &.#{$theme-name} {
-
-        button {
-            background-color: $bg;
-            color: $font;
-        }
-
-    }
-    
-}
-
 body {
     margin: 0px;
     font-family: "Open Sans", sans-serif;
@@ -213,42 +201,26 @@ body {
             display: grid;
             gap: 30px;
             grid-template-columns: 1fr;
-            grid-auto-rows: 500px;
+            grid-auto-rows: auto;
 
             @include portrait-phones {
 
                 grid-template-columns: 1fr 1fr;
-                grid-auto-rows: 100px;
+                grid-auto-rows: auto;
 
                 :first-child {
                     grid-column: span 2;
-                    grid-row: span 5;
-
                 }
-
-                :not(first-child) {
-                    grid-column: span 1;
-                    grid-row: span 4;
-                }
-
-
 
             }
 
             @include laptops {
 
                 grid-template-columns: 1fr 1fr 1fr;
-                grid-auto-rows: 100px;
+                grid-auto-rows: auto;
 
                 :first-child {
-                    grid-column: span 2;
-                    grid-row: span 6;
-
-                }
-
-                :not(first-child) {
-                    grid-column: span 1;
-                    grid-row: span 3;
+                    grid-column: span 3;
                 }
 
             }
@@ -256,17 +228,10 @@ body {
             @include large-devices {
 
                 grid-template-columns: 1fr 1fr 1fr;
-                grid-auto-rows: 100px;
+                grid-auto-rows: auto;
 
                 :first-child {
-                    grid-column: span 2;
-                    grid-row: span 6;
-
-                }
-
-                :not(first-child) {
-                    grid-column: span 1;
-                    grid-row: span 3;
+                    grid-column: span 3;
                 }
 
             }
@@ -299,6 +264,7 @@ body {
         color: white;
         font-size: 13px;
         font-weight: 500;
+        cursor: pointer;
     }
 }
 
@@ -307,55 +273,42 @@ body {
     @include PostCardFont("theme-light", $font-light--primary , $font-light--secondary );
     @include PostCardFont("theme-dark", $font-dark--primary , $font-dark--secondary );
 
-    @include Button("theme-light", black , white);
-    @include Button("theme-dark", white , black);
-
-    max-height: fit-content;
+    height: 100%;
     gap: 10px;
 
     img {
         background-color: gray;
         border-radius: 5px;
+        
+        cursor: pointer;
+
+        &:hover {
+        }
     }
 
     .text {
 
-        overflow: hidden;
-        min-height: 120px;
+        padding-top: 10px;
 
         h2 {
+            padding-top: 10px;
             margin: 0px;
+            width: fit-content;
+
+            &:hover {
+                text-decoration: underline;
+                color: rgb(102, 144, 192);
+                cursor: pointer;
+            }
         }
     
         p {
+            padding-top: 10px;
             margin: 0px;
         }
 
     }
-    
 
-
-    button {
-
-        display: inline-flex;
-        align-items: center; 
-
-        width: fit-content;
-        margin-left: auto;
-
-        font-weight: 600;
-        padding: 10px 20px 10px 20px;
-        border-radius: 3px;
-        border: none;
-        float: right;
-        transition: ease-in-out 200ms;
-
-        &:hover {
-            background-color: rgb(94, 94, 94);
-            color: rgb(243, 243, 243);
-        }
-
-    }
 }
 
 .code-block {
