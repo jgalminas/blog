@@ -17,10 +17,6 @@ export default function Home({ posts }) {
 
       <Page>
 
-      <h1 align="middle"> Recent Posts </h1>
-
-
-
       <div className='posts'>
 
         {posts.map((post) => {
