@@ -64,7 +64,7 @@ body {
     box-sizing: border-box;
     align-items: center;
 
-    padding: 10px $content-padding 10px $content-padding;
+    padding: 20px $content-padding 10px $content-padding;
 
     margin-left: auto;
     margin-right: auto;
@@ -215,17 +215,6 @@ body {
             }
 
             @include laptops {
-
-                grid-template-columns: 1fr 1fr 1fr;
-                grid-auto-rows: auto;
-
-                :first-child {
-                    grid-column: span 3;
-                }
-
-            }
-
-            @include large-devices {
 
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-auto-rows: auto;

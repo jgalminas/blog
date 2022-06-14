@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import cookie from 'cookie-cutter';
+import { setCookies } from "cookies-next";
 
 const THEME_DARK = " theme-dark ";
 const THEME_LIGHT = " theme-light ";
@@ -10,30 +10,10 @@ export function useTheme() {
     return useContext(ThemeContext);
 }
 
-export function ThemeProvider({children}) {
+export function ThemeProvider({ initialTheme, children }) {
 
-    useEffect(() => {
-
-        // const themeSettings = cookie.get("theme_settings")
-
-        // if (themeSettings === "true") {
-        //     setCurrentTheme(true);
-        // } else {
-        //     setCurrentTheme(false);
-        // }        
-
-    }, [])
-
-    const [currentTheme, setCurrentTheme] = useState(false);
-    const [themeClass, setThemeClass] = useState(THEME_LIGHT);
-
-    useEffect(() => {
-        
-        // cookie.set("theme_settings", currentTheme);
-
-        // !currentTheme ? setThemeClass(THEME_LIGHT) : setThemeClass(THEME_DARK);
-
-    }, [currentTheme])
+    const [currentTheme, setCurrentTheme] = useState(initialTheme);
+    const [themeClass, setThemeClass] = useState(!initialTheme ? THEME_LIGHT : THEME_DARK);
 
     const theme = {
         current: currentTheme,
@@ -41,14 +21,19 @@ export function ThemeProvider({children}) {
         setTheme
     }
 
+    useEffect(() => {
+        
+        setCookies('theme_settings', currentTheme, { maxAge: 60 * 60 * 24 * 90 });
+        !currentTheme ? setThemeClass(THEME_LIGHT) : setThemeClass(THEME_DARK);
+
+    }, [currentTheme])
+
     function setTheme() {
 
         if (theme.current) {
             setCurrentTheme(false);
-            // setThemeClass(THEME_LIGHT)
         } else {
             setCurrentTheme(true);
-            // setThemeClass(THEME_DARK)
         }
         
     }

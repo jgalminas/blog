@@ -1,22 +1,20 @@
 import '../styles/styles.css'
 import { ThemeProvider } from '../components/contexts/ThemeContext.js';
-import cookie from 'cookie-cutter';
+import { getCookie } from 'cookies-next';
 
-export default function MyApp({ Component, pageProps, props }) {
+export default function App({ Component, pageProps, theme }) {
   
-  console.log(props);
-
   return (
-      <ThemeProvider>
-      <Component {...pageProps} />
+      <ThemeProvider initialTheme={theme}>
+      <Component {...pageProps}/>
       </ThemeProvider>
   )
 }
 
-export async function getInitialProps(context) {
+App.getInitialProps = async ({ctx}) => {
+  
   return {
-    props : {
-      it: "asdas"
-    }
+    theme: getCookie('theme_settings', ctx) || false
   }
+
 }
