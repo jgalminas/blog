@@ -170,10 +170,12 @@ body {
 
     &.theme-light {
         background-color: $bg-light-primary;
+        color: $font-light--primary;
     }
     
     &.theme-dark {
         background-color: $bg-dark-primary;
+        color: $font-dark--primary;
     }
 
 
@@ -265,16 +267,6 @@ body {
     height: 100%;
     gap: 10px;
 
-    img {
-        background-color: gray;
-        border-radius: 5px;
-        
-        cursor: pointer;
-
-        &:hover {
-        }
-    }
-
     .text {
 
         padding-top: 10px;
@@ -316,4 +308,14 @@ body {
 
     }
 
+}
+
+.img {
+    background-color: gray;
+    border-radius: 5px;
+    
+    cursor: pointer;
+
+    &:hover {
+    }
 }

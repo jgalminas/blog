@@ -1,6 +1,6 @@
 import { CopyBlock, dracula } from "react-code-blocks";
 
-export default function Code({ text, language }) {
+export default function CodeBlock({ text, language }) {
     return (
         <div className="code-block">
         <CopyBlock

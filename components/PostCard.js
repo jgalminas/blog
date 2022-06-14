@@ -18,7 +18,7 @@ export default function PostCard({ post }) {
        
             
             <Link href={`/posts/${post.slug}`}>
-                <Image layout='responsive' height="70%" width="100%" src={post.img}/>
+                <Image className='img' layout='responsive' height="70%" width="100%" src={post.img}/>
             </Link>
 
             <div className='text'>
