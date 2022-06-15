@@ -1,5 +1,5 @@
 import Page from '../../components/Page.js'
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 import Head from 'next/head';
 import { getPaths, getPost } from '../../lib/api.js';
 import { serialize } from 'next-mdx-remote/serialize'
@@ -43,7 +43,7 @@ export default function Post({ content }) {
 
 export async function getStaticPaths() {
 
-  const paths = getPaths();
+  const paths = await getPaths();
 
   return {
     paths: paths.map((path) => {
@@ -58,7 +58,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(paths) {
 
   const slug = paths?.params?.slug;
-  const post = getPost(slug);
+  const post = await getPost(slug);
 
   const content = await serialize(post , { parseFrontmatter: true });
 

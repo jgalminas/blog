@@ -1,11 +1,9 @@
-import { useRouter } from 'next/router';
 import { useTheme } from './contexts/ThemeContext';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function PostCard({ post }) {
 
-    const router = useRouter();
     const { themeClass } = useTheme();
 
     const tags = post.tags.split(',').map((tag) => {
@@ -15,9 +13,8 @@ export default function PostCard({ post }) {
 
     return (
         <div className={themeClass + "flex col post-card"}>
-       
-            
-            <Link href={`/posts/${post.slug}`}>
+                        
+            <Link href='/posts/[slug]' as={'/posts/' + post.slug}>
                 <Image className='img' layout='responsive' height="70%" width="100%" src={post.img}/>
             </Link>
 
@@ -29,7 +26,7 @@ export default function PostCard({ post }) {
                     })}
                 </div>
 
-                <Link href={`/posts/${post.slug}`}><h2> { post.title } </h2></Link>
+                <Link href='/posts/[slug]' as={'/posts/' + post.slug}><h2> { post.title } </h2></Link>
 
                 <p> { post.description } </p>
 
