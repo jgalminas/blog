@@ -1,9 +1,11 @@
 import Page from '../../components/Page.js'
 import { Fragment } from 'react';
 import Head from 'next/head';
-import { getPaths, getPost } from '../../lib/api.js';
+import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtil.js';
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
+import { readFileSync } from 'fs';
+import path from 'path';
 
 import Image from 'next/image';
 
@@ -43,23 +45,22 @@ export default function Post({ content }) {
 
 export async function getStaticPaths() {
 
-  const paths = await getPaths();
+  const paths = postFilePaths
+  .map((path) => path.replace(/\.mdx?$/, '')) // Remove file extensions for page paths
+  .map((slug) => ({ params: { slug } })) // Map the path into the static paths object required by Next.js
 
   return {
-    paths: paths.map((path) => {
-      return {
-        params: { slug: path }
-       }
-    }),
+    paths,
     fallback: true,
   }
 }
 
-export async function getStaticProps(paths) {
+export async function getStaticProps({ params }) {
 
-  const slug = paths?.params?.slug;
-  const post = await getPost(slug);
+  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
+  const post = readFileSync(postFilePath);
 
+  // Convert MDX to JSX
   const content = await serialize(post , { parseFrontmatter: true });
 
   return {

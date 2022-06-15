@@ -2,8 +2,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Fragment } from 'react/cjs/react.production.min';
 import Page from '../components/Page.js';
-import { getPosts } from '../lib/api';
+import { postFilePaths, POSTS_PATH } from '../utils/mdxUtil.js';
 import PostCard from '../components/PostCard.js';
+import matter from 'gray-matter';
+import { readFileSync } from 'fs';
+import path from 'path';
 
 export default function Home({ posts }) {
   return (
@@ -32,7 +35,12 @@ export default function Home({ posts }) {
 
 export async function getStaticProps() {
 
-  const posts = await getPosts();
+  const posts = postFilePaths.map((filePath) => {
+    const source = readFileSync(path.join(POSTS_PATH, filePath))
+    const { data } = matter(source);
+
+    return data;
+  })
 
   return {
     props: {
