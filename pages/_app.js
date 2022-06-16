@@ -11,10 +11,12 @@ export default function App({ Component, pageProps, theme }) {
   )
 }
 
+
+
 App.getInitialProps = async ({ctx}) => {
   
   return {
-    theme: getCookie('theme_settings', ctx) || false
+    theme: getCookie('theme_settings', ctx)
   }
 
 }

@@ -10,12 +10,14 @@ import path from 'path';
 import Image from 'next/image';
 
 import CodeBlock from '../../components/CodeBlock.js';
+import { useTheme } from '../../components/contexts/ThemeContext.js';
 
 const components = { CodeBlock };
 
 export default function Post({ content }) {
 
-    const frontmatter = content?.frontmatter;
+    const { img } = content?.frontmatter;
+    const { themeClass } = useTheme();
 
     return (
         <Fragment>
@@ -28,16 +30,11 @@ export default function Post({ content }) {
 
         <Page>
 
-        {content &&
-        <Fragment>
-
-          <Image className='img' src={frontmatter.img} layout='responsive' height="70%" width="100%"/>
+          <div className={themeClass + "post"}>
+          <Image className='img' src={img} layout='responsive' height="70%" width="100%"/>
           <MDXRemote components={components} {...content}/>
+          </div>
 
-        </Fragment>}
-        
-
-  
         </Page>
       </Fragment>
     )

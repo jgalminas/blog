@@ -9,6 +9,8 @@ $font-light--secondary: rgb(68, 68, 68);
 $font-dark--primary: rgb(245, 245, 245);
 $font-dark--secondary: rgb(233, 233, 233);
 
+$color-link: rgb(102, 144, 192);
+
 $content-width: 1024px;
 $content-padding: 30px;
 
@@ -32,6 +34,20 @@ $content-padding: 30px;
 @mixin large-devices {
     @media screen and (min-width: 1200px) { @content; }
 }
+
+@mixin Themed($theme-name, $background, $font, $p) {
+    &.#{$theme-name} {
+        
+        background-color: $background;
+        color: $font;
+        
+        p {
+            color: $p;
+        }
+
+    }
+ }
+
 
 body {
     margin: 0px;
@@ -71,17 +87,6 @@ body {
 
     width: 100%;
     max-width: $content-width;
-
-    transition: ease-in 200ms;
-
-    &.theme-light {
-        color: $font-light--primary;
-    }
-
-    &.theme-dark {
-        color: $font-dark--primary;
-    }
-
 }
 
 .toggle-switch {
@@ -142,14 +147,7 @@ body {
 
 .navigation {
 
-    &.theme-light {
-        color: $font-light--primary;
-    }
-    
-    &.theme-dark {
-        color: $font-dark--primary;
-    }
-
+    transition: ease-in 200ms;
 
     ul {
         padding: 0px;
@@ -168,16 +166,8 @@ body {
 
 .page {
 
-    &.theme-light {
-        background-color: $bg-light-primary;
-        color: $font-light--primary;
-    }
-    
-    &.theme-dark {
-        background-color: $bg-dark-primary;
-        color: $font-dark--primary;
-    }
-
+    @include Themed("theme-light", $bg-light-primary, $font-light--primary , $font-light--secondary );
+    @include Themed("theme-dark", $bg-dark-primary, $font-dark--primary , $font-dark--secondary );
 
     min-height: 100vh;
     max-height: fit-content;
@@ -187,14 +177,13 @@ body {
 
     .content {
 
+
         padding: 30px;
         box-sizing: border-box;
 
         margin-left: auto;
         margin-right: auto;
-        
-        transition: ease-in 200ms;
-        
+                
         width: 100%;
         max-width: $content-width;
 
@@ -233,19 +222,6 @@ body {
 
 }
 
-@mixin PostCardFont($theme-name, $h2, $p) {
-    &.#{$theme-name} {
-
-        h2 {
-            color: $h2;
-        }
-        p {
-            color: $p;
-        }
-
-    }
- }
-
 .tags {
 
     div {
@@ -261,8 +237,7 @@ body {
 
 .post-card {
 
-    @include PostCardFont("theme-light", $font-light--primary , $font-light--secondary );
-    @include PostCardFont("theme-dark", $font-dark--primary , $font-dark--secondary );
+    transition: ease-in 200ms;
 
     height: 100%;
     gap: 10px;
@@ -278,7 +253,7 @@ body {
 
             &:hover {
                 text-decoration: underline;
-                color: rgb(102, 144, 192);
+                color: $color-link;
                 cursor: pointer;
             }
         }
@@ -317,5 +292,18 @@ body {
     cursor: pointer;
 
     &:hover {
+    }
+}
+
+
+.post {
+
+    transition: ease-in 200ms;
+
+
+    a {
+        color: $color-link;
+        font-style: italic;
+        font-weight: 500;
     }
 }
