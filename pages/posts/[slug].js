@@ -16,7 +16,7 @@ const components = { CodeBlock };
 
 export default function Post({ content }) {
 
-    const { img } = content?.frontmatter;
+    const frontmatter = content?.frontmatter;
     const { themeClass } = useTheme();
 
     return (
@@ -29,12 +29,12 @@ export default function Post({ content }) {
         </Head>
 
         <Page>
-
-          <div className={themeClass + "post"}>
-          <Image className='img' src={img} layout='responsive' height="70%" width="100%"/>
-          <MDXRemote components={components} {...content}/>
-          </div>
-
+          {content &&
+            <div className={themeClass + "post"}>
+            <Image className='img' src={frontmatter.img} layout='responsive' height="70%" width="100%"/>
+            <MDXRemote components={components} {...content}/>
+            </div>
+          }
         </Page>
       </Fragment>
     )
