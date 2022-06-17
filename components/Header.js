@@ -4,10 +4,10 @@ import ToggleInput from './ToggleInput.js';
 
 export default function Header() {
 
-    const { current, setTheme, themeClass } = useTheme();
+    const { current, setTheme } = useTheme();
 
     return (
-        <div className={themeClass + "header flex row"}>
+        <div className="header flex row">
             <Navigation/>
             <div className='flex-right'>
                 <ToggleInput value={current} onChange={setTheme}/>

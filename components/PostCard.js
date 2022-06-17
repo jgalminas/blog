@@ -1,10 +1,7 @@
-import { useTheme } from './contexts/ThemeContext';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function PostCard({ post }) {
-
-    const { themeClass } = useTheme();
 
     const tags = post.tags.split(',').map((tag) => {
         const trimmed = tag.trim();
@@ -12,7 +9,7 @@ export default function PostCard({ post }) {
     });
 
     return (
-        <div className={themeClass + "flex col post-card"}>
+        <div className="flex col post-card">
                         
             <Link href='/posts/[slug]' as={'/posts/' + post.slug}>
                 <Image className='img' layout='responsive' height="70%" width="100%" src={post.img}/>

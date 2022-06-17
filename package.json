@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "cookies-next": "^2.0.4",
     "gray-matter": "^4.0.3",
     "next": "12.1.0",
     "next-mdx-remote": "^4.0.3",
