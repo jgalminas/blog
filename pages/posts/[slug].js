@@ -4,12 +4,14 @@ import Head from 'next/head';
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtil.js';
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
-import { readFileSync } from 'fs';
+import { createReadStream, readFileSync } from 'fs';
 import path from 'path';
+import * as readline from 'readline';
 
 import Image from 'next/image';
 
 import CodeBlock from '../../components/CodeBlock.js';
+import matter from 'gray-matter';
 
 const components = { CodeBlock };
 
@@ -31,6 +33,7 @@ export default function Post({ content }) {
             <div className="post">
             <Image className='img' src={frontmatter.img} layout='responsive' height="70%" width="100%"/>
             <MDXRemote components={components} {...content}/>
+            
             </div>
           }
         </Page>
@@ -39,7 +42,7 @@ export default function Post({ content }) {
 }
 
 export async function getStaticPaths() {
-
+  
   const paths = postFilePaths
   .map((path) => path.replace(/\.mdx?$/, '')) // Remove file extensions for page paths
   .map((slug) => ({ params: { slug } })) // Map the path into the static paths object required by Next.js
@@ -52,11 +55,51 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
 
+  console.log();
+
   const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
   const post = readFileSync(postFilePath);
 
   // Convert MDX to JSX
   const content = await serialize(post , { parseFrontmatter: true });
+
+  const relatedPosts = postFilePaths;
+
+
+  const inter = readline.createInterface({
+    input: createReadStream("posts/testing-mdx.mdx")
+  });
+
+
+
+  // inter.on('line', (line) => {
+    
+  //   const front = [];
+
+  //   if (line == '---') {
+  //     front.push(line)
+  //     lineNum++;
+  //   } else if (lineNum == 2) {
+  //     return;
+  //   }
+    
+  // })
+
+  // let lineNum = 0;
+  // let frontmatter = {};
+
+  // for await (const line of inter) {
+
+  //   if (line.trim() === '---') {
+  //     lineNum++;
+  //   } else if (lineNum != 2) {
+  //     const property = 
+  //     frontmatter = {...frontmatter, line}
+  //   }
+    
+  // }
+
+  // console.log(frontmatter);
 
   return {
     props: {

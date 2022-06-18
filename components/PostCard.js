@@ -11,9 +11,14 @@ export default function PostCard({ post }) {
     return (
         <div className="flex col post-card">
                         
-            <Link href='/posts/[slug]' as={'/posts/' + post.slug}>
+            {/* <Link href='/posts/[slug]' as={'/posts/' + post.slug}>
                 <Image className='img' layout='responsive' height="70%" width="100%" src={post.img}/>
-            </Link>
+            </Link> */}
+
+            <div>
+            <Image className='img' layout='responsive' height="70%" width="100%" priority="true" src={post.img}/>
+            </div>
+
 
             <div className='text'>
 
