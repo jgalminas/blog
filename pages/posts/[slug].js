@@ -85,19 +85,36 @@ export async function getStaticProps({ params }) {
     
   // })
 
-  // let lineNum = 0;
-  // let frontmatter = {};
+  let lineNum = 0;
+  let frontmatter = {};
 
-  // for await (const line of inter) {
+  for await (const line of inter) {
 
-  //   if (line.trim() === '---') {
-  //     lineNum++;
-  //   } else if (lineNum != 2) {
-  //     const property = 
-  //     frontmatter = {...frontmatter, line}
-  //   }
+    if (line.trim() === '---') {
+      lineNum++;
+    } else if (lineNum != 2) {
+
+
+      
+      if (line.includes(':')) {
+
+        const separatorIndex = line.indexOf(':');
+
+        const left = line.substring(0, separatorIndex).trim();
+        const right = line.substring(separatorIndex + 1, line.length).trim();
+       
+        frontmatter = {...frontmatter, left: right}
+
+        // jusr gotta turn left to prop value
+
+      }
+
+      console.log(frontmatter);
+
+
+    }
     
-  // }
+  }
 
   // console.log(frontmatter);
 
