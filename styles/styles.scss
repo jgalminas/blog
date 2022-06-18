@@ -13,6 +13,18 @@ $color-link: rgb(102, 144, 192);
 $content-width: 1024px;
 $content-padding: 30px;
 
+
+:root {
+    /* Your default theme */
+    --background: rgb(196, 128, 128);
+    --foreground: black;
+  }
+  
+  [data-theme='dark'] {
+    --background: black;
+    --foreground: white;
+  }
+
 @mixin portrait-phones {
     @media screen and (min-width: 668px) { @content; }
 }
@@ -43,14 +55,16 @@ $content-padding: 30px;
  }
 
  html {
-    @include Themed("theme-light", $bg-light-primary, $font-light--primary , $font-light--secondary );
-    @include Themed("theme-dark", $bg-dark-primary, $font-dark--primary , $font-dark--secondary );
+    // @include Themed("theme-light", $bg-light-primary, $font-light--primary , $font-light--secondary );
+    // @include Themed("theme-dark", $bg-dark-primary, $font-dark--primary , $font-dark--secondary );
 }
 
 
 body {
     margin: 0px;
     font-family: "Open Sans", sans-serif;
+    background-color: var(--background);
+
 }
 
 .flex {

@@ -1,5 +1,5 @@
 import '../styles/styles.css'
-import { ThemeProvider } from '../components/contexts/ThemeContext.js';
+import { ThemeProvider } from 'next-themes'
 
 export default function App({ Component, pageProps }) {
   

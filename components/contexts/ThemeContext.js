@@ -11,7 +11,7 @@ export function useTheme() {
 
 export function ThemeProvider({ children }) {
 
-    const [currentTheme, setCurrentTheme] = useState(undefined);
+    const [currentTheme, setCurrentTheme] = useState(false);
     const [themeClass, setThemeClass] = useState(currentTheme ? THEME_DARK : THEME_LIGHT);
 
     const theme = {
