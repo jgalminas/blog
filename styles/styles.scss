@@ -29,8 +29,8 @@ $content-padding: 30px;
     @media screen and (min-width: 1200px) { @content; }
 }
 
-@mixin Themed($bool, $background, $font, $p) {
-    [data-theme=true] {
+@mixin Themed($theme-name, $background, $font, $p) {
+    &.#{$theme-name} {
         
         background-color: $background;
         color: $font;
@@ -42,20 +42,9 @@ $content-padding: 30px;
     }
  }
 
- [data-theme=true] {
-    --background-color: rgb(85, 85, 85);
-  }
-
-  [data-theme=false] {
-    --background-color: rgb(219, 219, 219);
-  }
-
-
-
  html {
-    background-color: var(--background-color);
-    // @include Themed("theme-light", $bg-light-primary, $font-light--primary , $font-light--secondary );
-    // @include Themed("theme-dark", $bg-dark-primary, $font-dark--primary , $font-dark--secondary );
+    @include Themed("theme-light", $bg-light-primary, $font-light--primary , $font-light--secondary );
+    @include Themed("theme-dark", $bg-dark-primary, $font-dark--primary , $font-dark--secondary );
 }
 
 

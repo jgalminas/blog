@@ -14,13 +14,10 @@ export default function Document() {
                 const classList = document.documentElement.classList;
             
                 if (theme === 'true') {
-                    //classList.add('theme-dark');
-                    document.documentElement.setAttribute('data-theme', true)
+                    classList.add('theme-dark');
                 }  else {
-                    //classList.add('theme-light');
-                    document.documentElement.setAttribute('data-theme', false)
+                    classList.add('theme-light');
                 }
-
         
             })();
         `

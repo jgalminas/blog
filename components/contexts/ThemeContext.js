@@ -11,7 +11,7 @@ export function useTheme() {
 
 export function ThemeProvider({ children }) {
 
-    const [currentTheme, setCurrentTheme] = useState(false);
+    const [currentTheme, setCurrentTheme] = useState(undefined);
     const [themeClass, setThemeClass] = useState(currentTheme ? THEME_DARK : THEME_LIGHT);
 
     const theme = {
@@ -23,12 +23,8 @@ export function ThemeProvider({ children }) {
     useEffect(() => {
 
         // get the current theme from html class list
-         const theme = document.documentElement.classList.contains(THEME_DARK.trim());
-        const themes = JSON.parse(document.documentElement.getAttribute('data-theme'));
-
-        console.log(themes);
-
-        (themes ? setCurrentTheme(true) : setCurrentTheme(false)) ;
+        const theme = document.documentElement.classList.contains(THEME_DARK.trim());
+        (theme ? setCurrentTheme(true) : setCurrentTheme(false)) ;
 
     }, [])
     
@@ -38,19 +34,13 @@ export function ThemeProvider({ children }) {
         localStorage.setItem('theme_settings', currentTheme);
         !currentTheme ? setThemeClass(THEME_LIGHT) : setThemeClass(THEME_DARK);
 
-        if (currentTheme) {
-            document.documentElement.setAttribute('data-theme', true)
+        const htmlClassList = document.documentElement.classList;
+
+        if (!currentTheme) {
+            htmlClassList.replace(THEME_DARK.trim(), THEME_LIGHT.trim())
         } else {
-            document.documentElement.setAttribute('data-theme', false)
+            htmlClassList.replace(THEME_LIGHT.trim(), THEME_DARK.trim())
         }
-
-        // const htmlClassList = document.documentElement.classList;
-
-        // if (!currentTheme) {
-        //     htmlClassList.replace(THEME_DARK.trim(), THEME_LIGHT.trim())
-        // } else {
-        //     htmlClassList.replace(THEME_LIGHT.trim(), THEME_DARK.trim())
-        // }
 
     }, [currentTheme])
 
