@@ -1,20 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 :root {
-  /* Your default theme */
-  --background: rgb(196, 128, 128);
-  --foreground: black;
+  --background: rgb(240, 240, 240);
+  --foreground: rgb(51, 51, 51);
+  --font-primary: rgb(51, 51, 51);
+  --font-secondary: rgb(68, 68, 68);
 }
 
 [data-theme='dark'] {
-  --background: black;
-  --foreground: white;
+  --background: rgb(51, 51, 51);
+  --foreground: rgb(240, 240, 240);
+  --font-primary: rgb(245, 245, 245);
+  --font-secondary: rgb(233, 233, 233);
 }
 
 body {
   margin: 0px;
   font-family: "Open Sans", sans-serif;
   background-color: var(--background);
+  color: var(--font-primary);
+}
+
+body p {
+  color: var(--font-secondary);
 }
 
 .flex {
@@ -68,7 +76,7 @@ body {
   position: absolute;
   width: 50px;
   height: 25px;
-  background-color: #333333;
+  background-color: var(--foreground);
   border-radius: 50px;
   cursor: pointer;
 }
@@ -93,8 +101,8 @@ body {
   width: 19px;
   height: 19px;
   border-radius: 50%;
-  -webkit-box-shadow: inset 8px 0px 0px 0px #f0f0f0;
-          box-shadow: inset 8px 0px 0px 0px #f0f0f0;
+  -webkit-box-shadow: inset 8px 0px 0px 0px var(--background);
+          box-shadow: inset 8px 0px 0px 0px var(--background);
   -webkit-transition: 400ms;
   transition: 400ms;
 }
@@ -102,13 +110,13 @@ body {
 .toggle-switch label input:checked + .slider::before {
   -webkit-transform: translateX(25px);
           transform: translateX(25px);
-  background-color: #333333;
+  background-color: var(--background);
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
 .toggle-switch label input:checked + .slider {
-  background-color: #f0f0f0;
+  background-color: var(--foreground);
 }
 
 .navigation ul {

@@ -1,28 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
-$bg-light-primary: rgb(240, 240, 240);
-$bg-dark-primary: rgb(51, 51, 51);
-$font-light--primary: rgb(51, 51, 51);
-$font-light--secondary: rgb(68, 68, 68);
-$font-dark--primary: rgb(245, 245, 245);
-$font-dark--secondary: rgb(233, 233, 233);
+// $bg-light-primary: rgb(240, 240, 240);
+// $bg-dark-primary: rgb(51, 51, 51);
+// $font-light--primary: rgb(51, 51, 51);
+// $font-light--secondary: rgb(68, 68, 68);
+// $font-dark--primary: rgb(245, 245, 245);
+// $font-dark--secondary: rgb(233, 233, 233);
 
 $color-link: rgb(102, 144, 192);
 
 $content-width: 1024px;
 $content-padding: 30px;
 
-
 :root {
-    /* Your default theme */
-    --background: rgb(196, 128, 128);
-    --foreground: black;
+    // default theme
+    --background: rgb(240, 240, 240);
+    --foreground: rgb(51, 51, 51);
+    --font-primary: rgb(51, 51, 51);
+    --font-secondary: rgb(68, 68, 68);
   }
-  
+
   [data-theme='dark'] {
-    --background: black;
-    --foreground: white;
+      // dark theme
+      --background: rgb(51, 51, 51);
+      --foreground: rgb(240, 240, 240);
+      --font-primary: rgb(245, 245, 245);
+      --font-secondary: rgb(233, 233, 233);
   }
 
 @mixin portrait-phones {
@@ -41,29 +45,20 @@ $content-padding: 30px;
     @media screen and (min-width: 1200px) { @content; }
 }
 
-@mixin Themed($theme-name, $background, $font, $p) {
-    &.#{$theme-name} {
-        
-        background-color: $background;
-        color: $font;
-        
-        p {
-            color: $p;
-        }
-
+@mixin Themed($background, $font, $p) {
+    background-color: $background;
+    color: $font;
+    
+    p {
+        color: $p;
     }
  }
-
- html {
-    // @include Themed("theme-light", $bg-light-primary, $font-light--primary , $font-light--secondary );
-    // @include Themed("theme-dark", $bg-dark-primary, $font-dark--primary , $font-dark--secondary );
-}
-
 
 body {
     margin: 0px;
     font-family: "Open Sans", sans-serif;
-    background-color: var(--background);
+
+    @include Themed(var(--background), var(--font-primary), var(--font-secondary));
 
 }
 
@@ -116,7 +111,7 @@ body {
         position: absolute;
         width: $width;
         height: $height;
-        background-color: $bg-dark-primary;
+        background-color: var(--foreground);
         border-radius: 50px;
         cursor: pointer;
 
@@ -140,18 +135,18 @@ body {
             width: $height - $gap * 2;
             height: $height - $gap * 2;
             border-radius: 50%;
-            box-shadow: inset $inset 0px 0px 0px $bg-light-primary;
+            box-shadow: inset $inset 0px 0px 0px var(--background);
             transition: 400ms;
           }
     
           input:checked + .slider::before {
             transform: translateX($width / 2);
-            background-color: $bg-dark-primary;
+            background-color: var(--background);
             box-shadow: none;
           }
           
           input:checked + .slider {
-            background-color: $bg-light-primary;
+            background-color: var(--foreground)
           }
     }
     
