@@ -303,3 +303,9 @@ body {
         font-weight: 500;
     }
 }
+
+.related-posts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}

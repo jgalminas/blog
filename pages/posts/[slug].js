@@ -1,21 +1,20 @@
 import Page from '../../components/Page.js'
 import { Fragment } from 'react';
 import Head from 'next/head';
-import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtil.js';
+import { getRelatedPosts, postFilePaths, POSTS_PATH } from '../../utils/mdxUtil.js';
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
-import { createReadStream, readFileSync } from 'fs';
+import { readFileSync } from 'fs';
 import path from 'path';
-import * as readline from 'readline';
+import PostCard from '../../components/PostCard.js';
 
 import Image from 'next/image';
 
 import CodeBlock from '../../components/CodeBlock.js';
-import matter from 'gray-matter';
 
 const components = { CodeBlock };
 
-export default function Post({ content }) {
+export default function Post({ content, relatedPosts }) {
 
     const frontmatter = content?.frontmatter;
 
@@ -36,6 +35,15 @@ export default function Post({ content }) {
             
             </div>
           }
+
+          <h1 align="middle"> Related Posts </h1>
+
+          <div className='related-posts'>
+            {relatedPosts.map((post) => {
+              return <PostCard post={post}></PostCard>
+            })}
+          </div>
+
         </Page>
       </Fragment>
     )
@@ -55,72 +63,19 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
 
-  console.log();
-
   const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
   const post = readFileSync(postFilePath);
 
   // Convert MDX to JSX
   const content = await serialize(post , { parseFrontmatter: true });
 
-  const relatedPosts = postFilePaths;
-
-
-  const inter = readline.createInterface({
-    input: createReadStream("posts/testing-mdx.mdx")
-  });
-
-
-
-  // inter.on('line', (line) => {
-    
-  //   const front = [];
-
-  //   if (line == '---') {
-  //     front.push(line)
-  //     lineNum++;
-  //   } else if (lineNum == 2) {
-  //     return;
-  //   }
-    
-  // })
-
-  let lineNum = 0;
-  let frontmatter = {};
-
-  for await (const line of inter) {
-
-    if (line.trim() === '---') {
-      lineNum++;
-    } else if (lineNum != 2) {
-
-
-      
-      if (line.includes(':')) {
-
-        const separatorIndex = line.indexOf(':');
-
-        const left = line.substring(0, separatorIndex).trim();
-        const right = line.substring(separatorIndex + 1, line.length).trim();
-       
-        frontmatter = {...frontmatter, left: right}
-
-        // jusr gotta turn left to prop value
-
-      }
-
-      console.log(frontmatter);
-
-
-    }
-    
-  }
-
-  // console.log(frontmatter);
+  const { frontmatter } = content;
+  const relatedPosts = await getRelatedPosts(frontmatter.slug, frontmatter.tags);
 
   return {
     props: {
-      content
+      content,
+      relatedPosts
     },
   }
 }
