@@ -193,7 +193,7 @@ body p {
 }
 
 .post-card {
-  height: 100%;
+  width: 100%;
   gap: 10px;
 }
 
@@ -248,10 +248,12 @@ body p {
 }
 
 .related-posts {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
+}
+
+.img-wrapper {
+  min-width: 200px;
+  height: 100%;
+  margin-right: 20px;
 }
 /*# sourceMappingURL=styles.css.map */

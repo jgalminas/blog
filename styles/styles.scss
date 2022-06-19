@@ -237,7 +237,7 @@ body {
 
 .post-card {
 
-    height: 100%;
+    width: 100%;
     gap: 10px;
 
     .text {
@@ -305,7 +305,13 @@ body {
 }
 
 .related-posts {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    // display: flex;
+    // flex-direction: column;
     gap: 30px;
+}
+
+.img-wrapper {
+    min-width: 200px;
+    height: 100%;
+    margin-right: 20px;
 }

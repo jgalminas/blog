@@ -11,6 +11,7 @@ import PostCard from '../../components/PostCard.js';
 import Image from 'next/image';
 
 import CodeBlock from '../../components/CodeBlock.js';
+import RelatedPost from '../../components/RelatedPost.js';
 
 const components = { CodeBlock };
 
@@ -33,14 +34,18 @@ export default function Post({ content, relatedPosts }) {
             <Image className='img' src={frontmatter.img} layout='responsive' height="70%" width="100%"/>
             <MDXRemote components={components} {...content}/>
 
-            <h1 align="middle"> Related Posts </h1>
 
-            <div className='related-posts'>
-              {relatedPosts.map((post) => {
-                return <PostCard key={post.slug} post={post}></PostCard>
-              })}
-            </div>
+            {/* Make these span the whole width and move image to left side */}
+            <h1 align="middle"> Related Posts </h1>
             
+
+
+            <div className='flex col related-posts'>
+              {relatedPosts.map((post) => {
+                  return <RelatedPost key={post.slug} post={post}></RelatedPost>
+                })}
+            </div>
+
             </div>
           }
 

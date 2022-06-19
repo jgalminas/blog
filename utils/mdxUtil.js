@@ -46,21 +46,45 @@ export async function getMatterOnly(filePath) {
 
     const relatedPosts = [];
 
+    //number of weighings that make up the recommendation score
+    // currently date and tags
+    const numOfWeighings = 2;
+
+    const today = new Date();
+    today.setUTCHours(0,0,0,0);
+
     for (const post in postFilePaths) {
 
+      let tagScore = 0;
+      let dateScore = 1 / numOfWeighings;
+
       const postData = await getMatterOnly('posts/' + postFilePaths[post]);
-      for (const item in tags) {
-        if (postData.tags.includes(tags[item]) && postData.slug !== slug) {
-          relatedPosts.push(postData);
+      
+      // calculate tag weighing
+      for (const item in postData.tags) {
+        if (tags.includes(postData.tags[item])) {
+          tagScore += (1 / numOfWeighings) / tags.length; 
         }
+
       }
-  
-      if (relatedPosts.length == 3) {
-        break;
+
+      //calculate date weighing
+      dateScore -= ((1 / numOfWeighings) / 365 ) * ((today - new Date(postData.date)) / (1000*60*60*24));
+
+      //total score
+      const score = tagScore + dateScore;
+
+      if (slug !== postData.slug) {
+        relatedPosts.push({...postData, score});
       }
+
   
     }
 
-    return relatedPosts;
+    // sort posts by score
+    relatedPosts.sort((p1, p2) => (p1.score < p2.score) ? 1 : -1);
+
+    //return the 3 most relevant posts
+    return relatedPosts.slice(0, 3);
 
   }
