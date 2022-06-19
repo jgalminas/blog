@@ -32,17 +32,17 @@ export default function Post({ content, relatedPosts }) {
             <div className="post">
             <Image className='img' src={frontmatter.img} layout='responsive' height="70%" width="100%"/>
             <MDXRemote components={components} {...content}/>
+
+            <h1 align="middle"> Related Posts </h1>
+
+            <div className='related-posts'>
+              {relatedPosts.map((post) => {
+                return <PostCard key={post.slug} post={post}></PostCard>
+              })}
+            </div>
             
             </div>
           }
-
-          <h1 align="middle"> Related Posts </h1>
-
-          <div className='related-posts'>
-            {relatedPosts.map((post) => {
-              return <PostCard post={post}></PostCard>
-            })}
-          </div>
 
         </Page>
       </Fragment>
