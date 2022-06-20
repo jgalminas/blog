@@ -2,12 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Tags from './Tags.js';
 
-export default function RelatedPost({ post }) {
+export default function RelatedPost({ post, priority }) {
 
     return (
         <div className="related-post-card">
 
-            <Image className='img' objectFit='cover' height="607.50" width="1080" src={post.img}/>
+            <Image className='img' objectFit='cover' height={607.50} width={1080} src={post.img} priority={priority}/>
 
             <div className='text'>
 

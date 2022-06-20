@@ -88,3 +88,19 @@ export async function getMatterOnly(filePath) {
     return relatedPosts.slice(0, 3);
 
   }
+
+  export async function getRecentPosts() {
+
+    const posts = [];
+
+    for (const post in postFilePaths) {
+      
+      posts.push(await getMatterOnly('posts/' + postFilePaths[post]));
+
+    }
+
+    // sort posts by date
+    posts.sort((p1, p2) => (new Date(p1.date) < new Date(p2.date)) ? 1 : -1);
+    
+    return posts.slice(0, 6);
+  }

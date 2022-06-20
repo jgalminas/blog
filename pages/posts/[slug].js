@@ -6,8 +6,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
 import { readFileSync } from 'fs';
 import path from 'path';
-import PostCard from '../../components/PostCard.js';
-
+import { getFormattedDate } from '../../utils/time.js';
 import Image from 'next/image';
 
 import CodeBlock from '../../components/CodeBlock.js';
@@ -15,7 +14,7 @@ import RelatedPost from '../../components/RelatedPost.js';
 
 const components = { CodeBlock };
 
-export default function Post({ content, relatedPosts }) {
+export default function Post({ content, relatedPosts, error }) {
 
     const frontmatter = content?.frontmatter;
 
@@ -29,23 +28,19 @@ export default function Post({ content, relatedPosts }) {
         </Head>
 
         <Page>
-          {content &&
+          {content && !error ?
             <div className="post">
 
             <h1> {frontmatter.title} </h1>
             <p> {frontmatter.description} </p>
-            <p> Published on { new Date(frontmatter.date).toDateString() } </p>
+            <p> <strong> Published on { getFormattedDate(frontmatter.date) } </strong>  </p>
 
             <Image className='img' objectFit='cover' height="607.50" width="1080" src={frontmatter.img} priority/>
 
 
             <MDXRemote components={components} {...content}/>
 
-
-            {/* Make these span the whole width and move image to left side */}
-            <h1 align="middle"> Related Posts </h1>
-            
-
+            <h1> Related Posts </h1>
 
             <div className='related-posts'>
               {relatedPosts.map((post) => {
@@ -54,7 +49,7 @@ export default function Post({ content, relatedPosts }) {
             </div>
 
             </div>
-          }
+          : <h1 align="middle"> Error occured </h1>}
 
         </Page>
       </Fragment>
@@ -76,18 +71,26 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
 
   const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
-  const post = readFileSync(postFilePath);
+  let relatedPosts = null;
+  let content = null;
+  let error = false;
 
-  // Convert MDX to JSX
-  const content = await serialize(post , { parseFrontmatter: true });
+  try {
+    const post = readFileSync(postFilePath);
+    // Convert MDX to JSX
+    content = await serialize(post , { parseFrontmatter: true });
 
-  const { frontmatter } = content;
-  const relatedPosts = await getRelatedPosts(frontmatter.slug, frontmatter.tags);
+    const { frontmatter } = content;
+    relatedPosts = await getRelatedPosts(frontmatter.slug, frontmatter.tags);
+  } catch (err) {
+    error = true;
+  }
 
   return {
     props: {
       content,
-      relatedPosts
+      relatedPosts,
+      error
     },
   }
 }

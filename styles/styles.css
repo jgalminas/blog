@@ -152,34 +152,14 @@ body p {
 }
 
 .page .content .posts {
-  display: -ms-grid;
-  display: grid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 30px;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  grid-auto-rows: auto;
-}
-
-@media screen and (min-width: 668px) {
-  .page .content .posts {
-    -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
-    grid-auto-rows: auto;
-  }
-  .page .content .posts :first-child {
-    grid-column: span 2;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .page .content .posts {
-    -ms-grid-columns: 1fr 1fr 1fr;
-        grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: auto;
-  }
-  .page .content .posts :first-child {
-    grid-column: span 3;
-  }
 }
 
 .tags {
