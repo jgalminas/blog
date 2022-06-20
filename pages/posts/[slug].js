@@ -1,21 +1,20 @@
 import Page from '../../components/Page.js'
 import { Fragment } from 'react';
 import Head from 'next/head';
-import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtil.js';
+import { getRelatedPosts, postFilePaths, POSTS_PATH } from '../../utils/mdxUtil.js';
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
-import { createReadStream, readFileSync } from 'fs';
+import { readFileSync } from 'fs';
 import path from 'path';
-import * as readline from 'readline';
-
+import { getFormattedDate } from '../../utils/time.js';
 import Image from 'next/image';
 
 import CodeBlock from '../../components/CodeBlock.js';
-import matter from 'gray-matter';
+import RelatedPost from '../../components/RelatedPost.js';
 
 const components = { CodeBlock };
 
-export default function Post({ content }) {
+export default function Post({ content, relatedPosts, error }) {
 
     const frontmatter = content?.frontmatter;
 
@@ -29,13 +28,29 @@ export default function Post({ content }) {
         </Head>
 
         <Page>
-          {content &&
+          {content && !error ?
             <div className="post">
-            <Image className='img' src={frontmatter.img} layout='responsive' height="70%" width="100%"/>
+
+            <h1> {frontmatter.title} </h1>
+            <p> {frontmatter.description} </p>
+            <p> <strong> Published on { getFormattedDate(frontmatter.date) } </strong>  </p>
+
+            <Image className='img' objectFit='cover' height="607.50" width="1080" src={frontmatter.img} priority/>
+
+
             <MDXRemote components={components} {...content}/>
-            
+
+            <h1> Related Posts </h1>
+
+            <div className='related-posts'>
+              {relatedPosts.map((post) => {
+                  return <RelatedPost key={post.slug} post={post}></RelatedPost>
+                })}
             </div>
-          }
+
+            </div>
+          : <h1 align="middle"> Error occured </h1>}
+
         </Page>
       </Fragment>
     )
@@ -55,55 +70,27 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
 
-  console.log();
-
   const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
-  const post = readFileSync(postFilePath);
+  let relatedPosts = null;
+  let content = null;
+  let error = false;
 
-  // Convert MDX to JSX
-  const content = await serialize(post , { parseFrontmatter: true });
+  try {
+    const post = readFileSync(postFilePath);
+    // Convert MDX to JSX
+    content = await serialize(post , { parseFrontmatter: true });
 
-  const relatedPosts = postFilePaths;
-
-
-  const inter = readline.createInterface({
-    input: createReadStream("posts/testing-mdx.mdx")
-  });
-
-
-
-  // inter.on('line', (line) => {
-    
-  //   const front = [];
-
-  //   if (line == '---') {
-  //     front.push(line)
-  //     lineNum++;
-  //   } else if (lineNum == 2) {
-  //     return;
-  //   }
-    
-  // })
-
-  // let lineNum = 0;
-  // let frontmatter = {};
-
-  // for await (const line of inter) {
-
-  //   if (line.trim() === '---') {
-  //     lineNum++;
-  //   } else if (lineNum != 2) {
-  //     const property = 
-  //     frontmatter = {...frontmatter, line}
-  //   }
-    
-  // }
-
-  // console.log(frontmatter);
+    const { frontmatter } = content;
+    relatedPosts = await getRelatedPosts(frontmatter.slug, frontmatter.tags);
+  } catch (err) {
+    error = true;
+  }
 
   return {
     props: {
-      content
+      content,
+      relatedPosts,
+      error
     },
   }
 }
