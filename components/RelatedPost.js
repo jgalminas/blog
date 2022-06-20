@@ -1,24 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Tags from './Tags.js';
 
 export default function RelatedPost({ post }) {
 
     return (
-        <div className="flex row post-card">
-                        
+        <div className="related-post-card">
 
-            <div className='img-wrapper'>
-            <Image className='img' layout='responsive' height="30%" width="40%" priority="true" src={post.img}/>
-            </div>
-
+            <Image className='img' objectFit='cover' height="607.50" width="1080" src={post.img}/>
 
             <div className='text'>
 
-                <div className='tags flex row gap-10'>
-                    {post.tags.map((tag) => {
-                        return <div key={tag}> { tag[0].toUpperCase() + tag.substring(1) } </div>
-                    })}
-                </div>
+                <Tags tags={post.tags}/>
 
                 <Link href='/posts/[slug]' as={'/posts/' + post.slug}><h2> { post.title } </h2></Link>
 

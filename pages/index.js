@@ -9,6 +9,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 
 export default function Home({ posts }) {
+
   return (
     <Fragment>
 

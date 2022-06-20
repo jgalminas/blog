@@ -31,7 +31,14 @@ export default function Post({ content, relatedPosts }) {
         <Page>
           {content &&
             <div className="post">
-            <Image className='img' src={frontmatter.img} layout='responsive' height="70%" width="100%"/>
+
+            <h1> {frontmatter.title} </h1>
+            <p> {frontmatter.description} </p>
+            <p> Published on { new Date(frontmatter.date).toDateString() } </p>
+
+            <Image className='img' objectFit='cover' height="607.50" width="1080" src={frontmatter.img} priority/>
+
+
             <MDXRemote components={components} {...content}/>
 
 
@@ -40,7 +47,7 @@ export default function Post({ content, relatedPosts }) {
             
 
 
-            <div className='flex col related-posts'>
+            <div className='related-posts'>
               {relatedPosts.map((post) => {
                   return <RelatedPost key={post.slug} post={post}></RelatedPost>
                 })}
