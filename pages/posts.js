@@ -1,19 +1,11 @@
 import Head from 'next/head';
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 import Page from '../components/Page.js';
 // import { getRecentPosts } from '../utils/mdxUtil.js';
 // import PostCard from '../components/PostCard.js';
 // import RelatedPost from '../components/RelatedPost.js';
 
 export default function Home({ posts }) {
-
-    useEffect(async () => {
-
-      
-
-    }, [])
-
-    // console.log(posts);
 
   return (
     <Fragment>
