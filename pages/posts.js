@@ -1,13 +1,11 @@
 import Head from 'next/head';
-import { Fragment } from 'react/cjs/react.production.min';
+import { Fragment } from 'react';
 import Page from '../components/Page.js';
-import { getRecentPosts } from '../utils/mdxUtil.js';
+// import { getRecentPosts } from '../utils/mdxUtil.js';
 // import PostCard from '../components/PostCard.js';
 // import RelatedPost from '../components/RelatedPost.js';
 
 export default function Home({ posts }) {
-
-    console.log(posts);
 
   return (
     <Fragment>
@@ -40,14 +38,16 @@ export default function Home({ posts }) {
   )
 }
 
-export async function getServerSideProps() {
+// export async function getServerSideProps() {
 
-      return {
-    props: {
-      posts: await getRecentPosts()
-    }
-  }
-}
+//       const posts = [];
+
+//       return {
+//     props: {
+//       posts //: await getRecentPosts()
+//     }
+//   }
+// }
 
 // export async function getStaticProps() {
   
