@@ -1,6 +1,6 @@
-import Header from "./Header.js"
+import Header from "../components/Header.js"
 
-export default function Page({ children}) {
+export default function PageLayout({ children }) {
 
     return (
         <div className="flex col page">

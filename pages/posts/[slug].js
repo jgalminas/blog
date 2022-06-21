@@ -1,4 +1,3 @@
-import Page from '../../components/Page.js'
 import { Fragment } from 'react';
 import Head from 'next/head';
 import { getRelatedPosts, postFilePaths, POSTS_PATH } from '../../utils/mdxUtil.js';
@@ -27,8 +26,7 @@ export default function Post({ content, relatedPosts, error }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <Page>
-          {content && !error ?
+        {content && !error ?
             <div className="post">
 
             <h1> {frontmatter.title} </h1>
@@ -51,7 +49,6 @@ export default function Post({ content, relatedPosts, error }) {
             </div>
           : <h1 align="middle"> Error occured </h1>}
 
-        </Page>
       </Fragment>
     )
 }
