@@ -1,9 +1,11 @@
 import Head from 'next/head';
 import { Fragment } from 'react/cjs/react.production.min';
-import Page from '../components/Page.js';
-import { getRecentPosts } from '../utils/mdxUtil.js';
+import { getPostsByDate } from '../utils/mdxUtil.js';
 import PostCard from '../components/PostCard.js';
 import RelatedPost from '../components/RelatedPost.js';
+import Newsletter from '../components/Newsletter.js';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home({ posts }) {
 
@@ -16,31 +18,41 @@ export default function Home({ posts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Page>
+
+      <div className='hero'>
+
+        <h1 align="right"> Hi, my name is Justin. </h1>
+        <h2> Welcome to my blog! Here I write about my experience in the software development space. </h2>
+
+        <Link href="/about"> About me </Link>
+
+      </div>
+
+      <Newsletter/>
+
+
 
       <div className='posts'>
 
-        <PostCard key={posts[0].slug} post={posts[0]} priority />
-
         <h2> Recently added </h2>
 
-        {posts.slice(1, posts.length).map((post) => {
+        {posts.map((post) => {
           return <RelatedPost key={post.slug} post={post}/>
         })}
-        
+
       </div>
 
-      </Page>
+
     </Fragment>
 
   )
 }
 
 export async function getStaticProps() {
-  
+
   return {
     props: {
-      posts: await getRecentPosts()
+      posts: await getPostsByDate(6)
     }
   }
-}
+} 

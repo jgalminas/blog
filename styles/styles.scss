@@ -1,32 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 
-// $bg-light-primary: rgb(240, 240, 240);
-// $bg-dark-primary: rgb(51, 51, 51);
-// $font-light--primary: rgb(51, 51, 51);
-// $font-light--secondary: rgb(68, 68, 68);
-// $font-dark--primary: rgb(245, 245, 245);
-// $font-dark--secondary: rgb(233, 233, 233);
-
-$color-link: rgb(102, 144, 192);
+$color-link: #3191EA;
 
 $content-width: 1024px;
 $content-padding: 30px;
 
 :root {
     // default theme
-    --background: rgb(240, 240, 240);
+    --background: #FCFCFC;
     --foreground: rgb(51, 51, 51);
-    --font-primary: rgb(51, 51, 51);
-    --font-secondary: rgb(68, 68, 68);
+    --font-primary: #2E2E2E;
+    --font-secondary: #565656;
+    --newsletter-container: rgb(243, 243, 243);
+    --tags: #1561a8;
   }
 
   [data-theme='dark'] {
       // dark theme
-      --background: rgb(51, 51, 51);
+      --background: #333333;
       --foreground: rgb(240, 240, 240);
       --font-primary: rgb(245, 245, 245);
       --font-secondary: rgb(233, 233, 233);
+      --newsletter-container: rgba(78, 78, 78, 0.425);
+      --tags: #4aa8ff;
   }
 
 @mixin portrait-phones {
@@ -54,11 +51,21 @@ $content-padding: 30px;
     }
  }
 
-body {
+ html {
+    overflow-y: scroll;
+ }
+
+ body {
     margin: 0px;
-    font-family: "Open Sans", sans-serif;
+    font-family: "DM Sans", sans-serif;
+    font-size: 17px;
 
     @include Themed(var(--background), var(--font-primary), var(--font-secondary));
+
+    p {
+        line-height: 30px;
+        font-size: 18px;
+    }
 
 }
 
@@ -74,19 +81,150 @@ body {
     flex-direction: row;
 }
 
-.gap-10 {
-    gap: 10px;
-}
-
 .flex-right {
     margin-left: auto;
 }
 
+.hero {
+
+    padding: 100px 5% 100px 5%;
+
+    h1 {
+        font-size: 3em;
+        color: var(--font-primary);
+    }
+    h2 {
+        font-size: 2em;
+        color: var(--font-secondary);
+    }
+
+    a {
+        border: none;
+        background-color: #0074e0;
+        font-size: 16px;
+        color: #ffffff;
+        padding: 10px 20px 10px 20px;
+        border-radius: 5px;
+        outline: 1px solid transparent;
+
+        transition: ease-in-out 300ms;
+        text-decoration: none;
+
+        &:hover {
+            background-color: #118cff;
+        }
+
+
+    }
+
+
+
+}
+
+.newsletter {
+    
+    padding-top: 30px;
+    padding-bottom: 40px;
+
+    #heading {
+        margin-bottom: 50px;
+    }
+
+    #container {
+        display: flex;
+        flex-direction: column;
+        padding: 50px 30px 50px 30px;
+        background-color: var(--newsletter-container);
+        border-radius: 5px;
+    }
+
+    #message {
+        align-self: center;
+        text-align: center;
+
+        margin: 0px;
+        padding-bottom: 30px;
+
+        max-width: 500px;
+    }
+
+    
+
+    form {
+        justify-content: center;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+
+        @include portrait-phones {
+            flex-direction: row;
+        }
+
+        #button {
+            
+            width: auto;
+            flex-grow: 1;
+            
+            padding: 10px;
+
+            border-radius: 5px;
+            border: none;
+
+            background-color: #0074e0;
+            color: #ffffff;
+
+            cursor: pointer;
+
+            font-size: 16px;
+            transition: ease-in-out 300ms;
+            
+            &:hover {
+                background-color: #118cff;
+            }
+
+        }
+    
+        #input {
+            flex-grow: 1;
+            border-radius: 5px;
+            border: none;
+            box-shadow: none;
+            font-size: 16px;
+            max-width: 600px;
+            min-width: 70%;
+            color: rgb(71, 71, 71);
+            padding: 10px;
+            text-align: center;
+            background-color: #FCFCFC;
+
+            font-style: italic;
+            
+            outline: 1px solid transparent;
+            transition: ease-in-out 300ms;
+
+            &:hover {
+                outline: 1px solid #198ffd;
+            }
+
+            &:focus {
+                outline: 1px solid #198ffd;
+            }
+        }
+    }
+
+
+
+}
+
 .header {
+
+ 
 
     font-weight: 600;
     box-sizing: border-box;
     align-items: center;
+    
 
     padding: 20px $content-padding 10px $content-padding;
 
@@ -157,9 +295,10 @@ body {
     ul {
         padding: 0px;
         margin: 0px;
+        gap: 30px;
+
         li {
             list-style-type: none;
-
             a {
                 text-decoration: none;
                 color: inherit;
@@ -181,8 +320,11 @@ body {
         padding: 30px;
         box-sizing: border-box;
 
+        
         margin-left: auto;
-        margin-right: auto;
+        margin-right: auto; 
+
+
                 
         width: 100%;
         max-width: $content-width;
@@ -203,16 +345,17 @@ body {
 
     display: flex;
     flex-wrap: wrap;
+    gap: 10px;
 
     div {
         width: fit-content;
-        padding: 2px 10px 2px 10px;
         border-radius: 15px;
-        background-image: linear-gradient(45deg,rgb(255, 149, 88), rgb(187, 0, 178));
-        color: white;
-        font-size: 13px;
+        background-color: transparent;
+        color: var(--tags);
+        font-size: 16px;
         font-weight: 500;
         cursor: pointer;
+        text-decoration: none;
     }
 }
 
@@ -224,6 +367,8 @@ body {
         padding-top: 10px;
         margin: 0px;
 
+        transition: ease-in-out 300ms;
+
         &:hover {
             text-decoration: underline;
             color: $color-link;
@@ -232,16 +377,32 @@ body {
     }
 
     p {
-        padding-top: 10px;
-        margin: 0px;
+        font-size: 16px;
+        line-height: 20px;
+        font-style: normal;
     }
 
 }
 
+.article {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    gap: 20px;
+}
+
 .post-card {
 
-    width: 100%;
-    gap: 10px;
+    @extend .article;
+
+    span {
+        min-width: 60%;
+    }
+
+    @include portrait-phones {
+        flex-direction: row;
+    }
 
 }
 
@@ -292,12 +453,7 @@ body {
 
 .related-post-card {
 
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: fit-content;
-
-    gap: 20px;
+    @extend .article;
 
     .text {
         min-width: 70%;

@@ -13,11 +13,11 @@ export default function Header() {
     }, [current])
 
     return (
-        <div className="header flex row">
+        <header className="header flex row">
             <Navigation/>
             <div className='flex-right'>
                 <ToggleInput value={current} onChange={() => setCurrent(!current)}/>
             </div>
-        </div>
+        </header>
     )
 }

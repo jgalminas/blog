@@ -5,9 +5,9 @@ import Tags from './Tags.js';
 export default function RelatedPost({ post, priority }) {
 
     return (
-        <div className="related-post-card">
+        <article className="related-post-card">
 
-            <Image className='img' objectFit='cover' height={607.50} width={1080} src={post.img} priority={priority}/>
+            <Image className='img' objectFit='cover' alt={post.alt} height={607.50} width={1080} src={post.img} priority={priority}/>
 
             <div className='text'>
 
@@ -19,6 +19,6 @@ export default function RelatedPost({ post, priority }) {
 
             </div>
 
-        </div>
+        </article>
     )
 }
