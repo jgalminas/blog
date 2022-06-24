@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Fragment } from 'react/cjs/react.production.min';
-import { getRecentPosts } from '../utils/mdxUtil.js';
+import { getPostsByDate } from '../utils/mdxUtil.js';
 import PostCard from '../components/PostCard.js';
 import RelatedPost from '../components/RelatedPost.js';
 import Newsletter from '../components/Newsletter.js';
@@ -24,7 +24,7 @@ export default function Home({ posts }) {
         <h1 align="right"> Hi, my name is Justin. </h1>
         <h2> Welcome to my blog! Here I write about my experience in the software development space. </h2>
 
-        <Link href="/about"> More about me </Link>
+        <Link href="/about"> About me </Link>
 
       </div>
 
@@ -52,7 +52,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: await getRecentPosts()
+      posts: await getPostsByDate(6)
     }
   }
 } 

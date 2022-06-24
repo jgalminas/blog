@@ -5,9 +5,9 @@ export default function PageLayout({ children }) {
     return (
         <div className="flex col page">
             <Header/>
-            <div className="content">
+            <main className="content">
                 {children}
-            </div>
+            </main>
         </div>
     )
 }

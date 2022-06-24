@@ -6,6 +6,7 @@
   --font-primary: #2E2E2E;
   --font-secondary: #565656;
   --newsletter-container: rgb(243, 243, 243);
+  --tags: #1561a8;
 }
 
 [data-theme=dark] {
@@ -14,6 +15,7 @@
   --font-primary: rgb(245, 245, 245);
   --font-secondary: rgb(233, 233, 233);
   --newsletter-container: rgba(78, 78, 78, 0.425);
+  --tags: #4aa8ff;
 }
 
 html {
@@ -64,9 +66,9 @@ body p {
 }
 .hero a {
   border: none;
-  background-color: #e2f1ff;
-  font-size: 18px;
-  color: #198ffd;
+  background-color: #0074e0;
+  font-size: 16px;
+  color: #ffffff;
   padding: 10px 20px 10px 20px;
   border-radius: 5px;
   outline: 1px solid transparent;
@@ -74,8 +76,7 @@ body p {
   text-decoration: none;
 }
 .hero a:hover {
-  background-color: transparent;
-  outline: 1px solid #198ffd;
+  background-color: #118cff;
 }
 
 .newsletter {
@@ -103,34 +104,41 @@ body p {
   justify-content: center;
   display: flex;
   width: 100%;
+  flex-direction: column;
+  gap: 20px;
+}
+@media screen and (min-width: 668px) {
+  .newsletter form {
+    flex-direction: row;
+  }
 }
 .newsletter form #button {
+  width: auto;
+  flex-grow: 1;
   padding: 10px;
-  width: 150px;
   border-radius: 5px;
   border: none;
+  background-color: #0074e0;
+  color: #ffffff;
   cursor: pointer;
-  background-color: #198ffd;
-  color: #FCFCFC;
-  font-size: 18px;
+  font-size: 16px;
   transition: ease-in-out 300ms;
 }
 .newsletter form #button:hover {
-  background-color: #48a7ff;
+  background-color: #118cff;
 }
 .newsletter form #input {
-  margin-right: 20px;
   flex-grow: 1;
   border-radius: 5px;
   border: none;
   box-shadow: none;
   font-size: 16px;
   max-width: 600px;
+  min-width: 70%;
   color: rgb(71, 71, 71);
   padding: 10px;
   text-align: center;
   background-color: #FCFCFC;
-  font-weight: 600;
   font-style: italic;
   outline: 1px solid transparent;
   transition: ease-in-out 300ms;
@@ -240,7 +248,7 @@ body p {
   width: fit-content;
   border-radius: 15px;
   background-color: transparent;
-  color: #198ffd;
+  color: var(--tags);
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;

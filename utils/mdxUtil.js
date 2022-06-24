@@ -89,7 +89,7 @@ export async function getMatterOnly(filePath) {
 
   }
 
-  export async function getRecentPosts() {
+  export async function getPostsByDate(numOfPosts) {
 
     const posts = [];
 
@@ -102,5 +102,5 @@ export async function getMatterOnly(filePath) {
     // sort posts by date
     posts.sort((p1, p2) => (new Date(p1.date) < new Date(p2.date)) ? 1 : -1);
     
-    return posts.slice(0, 6);
+    return posts.slice(0, numOfPosts);
   }
