@@ -5,13 +5,10 @@ import Tags from './Tags';
 export default function PostCard({ post, priority }) {
 
     return (
-        <div className="flex col post-card">
+        <div className="post-card">
                         
 
-            <div className='img-wrapper'>
-            <Image className='img' layout='responsive' objectFit='cover' height={607.50} width={1080} priority={priority} src={post.img}/>
-            </div>
-
+            <Image className='img' objectFit='cover' height={607.50} width={1080} priority={priority} src={post.img}/>
 
             <div className='text'>
 

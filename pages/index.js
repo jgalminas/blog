@@ -3,6 +3,9 @@ import { Fragment } from 'react/cjs/react.production.min';
 import { getRecentPosts } from '../utils/mdxUtil.js';
 import PostCard from '../components/PostCard.js';
 import RelatedPost from '../components/RelatedPost.js';
+import Newsletter from '../components/Newsletter.js';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home({ posts }) {
 
@@ -15,17 +18,30 @@ export default function Home({ posts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='posts'>
 
-        <PostCard key={posts[0].slug} post={posts[0]} priority />
+      <div className='hero'>
+
+        <h1 align="right"> Hi, my name is Justin. </h1>
+        <h2> Welcome to my blog! Here I write about my experience in the software development space. </h2>
+
+        <Link href="/about"> More about me </Link>
+
+      </div>
+
+      <Newsletter/>
+
+
+
+      <div className='posts'>
 
         <h2> Recently added </h2>
 
-        {posts.slice(1, posts.length).map((post) => {
+        {posts.map((post) => {
           return <RelatedPost key={post.slug} post={post}/>
         })}
 
       </div>
+
 
     </Fragment>
 
