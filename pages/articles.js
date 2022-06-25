@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import { Fragment } from 'react';
-// import { getRecentPosts } from '../utils/mdxUtil.js';
-// import PostCard from '../components/PostCard.js';
-// import RelatedPost from '../components/RelatedPost.js';
+import { getPostsByYear } from '../utils/mdxUtil';
 
-export default function Home({ posts }) {
+import BriefPost from '../components/BriefPost';
+
+export default function Articles({ posts }) {
+
+  const years = Object.keys(posts).sort((y1, y2) => (parseInt(y1) < parseInt(y2)) ? 1 : -1);
 
   return (
     <Fragment>
@@ -15,41 +17,35 @@ export default function Home({ posts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h2> all posts </h2>
+      <h1> All articles </h1>
 
+      <div className='all-articles'>
 
-      {/* <div className='posts'>
-
-        <PostCard key={posts[0].slug} post={posts[0]} priority />
-
-
-        {posts.slice(1, posts.length).map((post) => {
-          return <RelatedPost key={post.slug} post={post}/>
+        {years.map((key) => {
+          return (
+            posts[key].map((post, index) => {
+              return (
+                <Fragment key={key + index}>
+                {index === 0 ? <h2 key={key}> {key} </h2> : null}
+                <BriefPost key={post.slug} post={post}/>
+                </Fragment>
+              )
+            })
+          )
         })}
         
-      </div> */}
+      </div>
 
     </Fragment>
 
   )
 }
 
-// export async function getServerSideProps() {
-
-//       const posts = [];
-
-//       return {
-//     props: {
-//       posts //: await getRecentPosts()
-//     }
-//   }
-// }
-
-// export async function getStaticProps() {
+export async function getStaticProps() {
   
-//   return {
-//     props: {
-//       posts: await getRecentPosts()
-//     }
-//   }
-// }
+  return {
+    props: {
+      posts: await getPostsByYear()
+    }
+  }
+}

@@ -7,11 +7,13 @@ import { readFileSync } from 'fs';
 import path from 'path';
 import { getFormattedDate } from '../../utils/time.js';
 import Image from 'next/image';
-
-import CodeBlock from '../../components/CodeBlock.js';
 import RelatedPost from '../../components/RelatedPost.js';
 
-const components = { CodeBlock };
+
+import CodeBlock from '../../components/CodeBlock.js';
+import WrappedImage from '../../components/WrappedImage.js';
+
+const components = { CodeBlock, WrappedImage };
 
 export default function Post({ content, relatedPosts, error }) {
 

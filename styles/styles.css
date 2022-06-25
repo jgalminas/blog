@@ -13,7 +13,7 @@
   --background: #333333;
   --foreground: rgb(240, 240, 240);
   --font-primary: rgb(245, 245, 245);
-  --font-secondary: rgb(233, 233, 233);
+  --font-secondary: rgb(207, 207, 207);
   --newsletter-container: rgba(78, 78, 78, 0.425);
   --tags: #4aa8ff;
 }
@@ -274,7 +274,7 @@ body p {
   font-style: normal;
 }
 
-.article, .related-post-card, .post-card {
+.article, .related-post-card, .brief-post-card {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -284,13 +284,35 @@ body p {
   gap: 20px;
 }
 
-.post-card span {
-  min-width: 60%;
+.all-articles {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
-@media screen and (min-width: 668px) {
-  .post-card {
-    flex-direction: row;
-  }
+.all-articles h2 {
+  margin: 0px;
+  font-size: 22px;
+}
+
+.brief-post-card {
+  gap: 10px;
+}
+.brief-post-card .text {
+  padding: 0px;
+}
+.brief-post-card .text h3 {
+  padding-top: 5px;
+  margin: 0px;
+  transition: ease-in-out 300ms;
+}
+.brief-post-card .text h3:hover {
+  text-decoration: underline;
+  color: #3191EA;
+  cursor: pointer;
+}
+.brief-post-card .text p {
+  margin-top: 5px;
+  margin-bottom: 0px;
 }
 
 .code-block {
