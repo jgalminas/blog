@@ -101,6 +101,38 @@ export async function getMatterOnly(filePath) {
 
     // sort posts by date
     posts.sort((p1, p2) => (new Date(p1.date) < new Date(p2.date)) ? 1 : -1);
-    
-    return posts.slice(0, numOfPosts);
+
+    if (numOfPosts == undefined) {
+      return posts;
+    } else {
+      return posts.slice(0, numOfPosts);
+    }
+
+  }
+
+  export async function getPostsByYear() {
+
+    const posts = {};
+
+    for (const post in postFilePaths) {
+      
+      const data = await getMatterOnly('posts/' + postFilePaths[post]);
+
+      const year = new Date(data.date).getFullYear();
+
+      if (!Object.keys(posts).includes(year.toString())) {
+        posts[year] = [];
+        posts[year].push(data);
+      } else {
+        posts[year].push(data);
+      }
+
+    }
+
+    Object.keys(posts).forEach((post) => {
+      posts[post].sort((p1, p2) => (new Date(p1.date) < new Date(p2.date)) ? 1 : -1);
+    })
+
+    return posts;
+
   }
