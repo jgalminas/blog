@@ -492,4 +492,11 @@ $content-padding: 30px;
     
 }
 
+.about-content {
+    display: flex;
+    flex-direction: column;
+}
 
+.highlight {
+    color: var(--tags);
+}
