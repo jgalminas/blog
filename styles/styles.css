@@ -351,4 +351,13 @@ body p {
   .related-post-card {
     flex-direction: row;
   }
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.highlight {
+  color: var(--tags);
 }/*# sourceMappingURL=styles.css.map */
