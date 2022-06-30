@@ -148,7 +148,11 @@ $content-padding: 30px;
         max-width: 500px;
     }
 
-    
+    #error-message {
+        margin: 0px;
+        padding: 20px 0px 0px 0px;
+        color: rgb(247, 19, 19);
+    }
 
     form {
         justify-content: center;
@@ -183,7 +187,18 @@ $content-padding: 30px;
                 background-color: #118cff;
             }
 
+            &.loading {
+                background-color: #b3b3b3;
+                cursor: not-allowed;
+            }
+
+            &.success {
+                background-color: rgb(65, 187, 102);
+            }
+            
         }
+
+
     
         #input {
             flex-grow: 1;
@@ -211,6 +226,8 @@ $content-padding: 30px;
                 outline: 1px solid #198ffd;
             }
         }
+
+
     }
 
 
@@ -219,7 +236,12 @@ $content-padding: 30px;
 
 .header {
 
- 
+    .logo-wrapper {
+        min-width: 50px;
+        min-height: 50px;
+        margin-right: 40px;
+        cursor: pointer;
+    }
 
     font-weight: 600;
     box-sizing: border-box;
@@ -499,4 +521,21 @@ $content-padding: 30px;
 
 .highlight {
     color: var(--tags);
+}
+
+.footer {
+
+    box-sizing: border-box;    
+    padding: 30px;
+
+    margin: auto auto 0 auto;
+
+    width: 100%;
+    max-width: $content-width;
+
+    #copyright {
+        margin: 0px;
+        font-size: 16px;
+    }
+
 }
