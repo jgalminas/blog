@@ -1,3 +1,4 @@
+import Footer from "../components/Footer.js";
 import Header from "../components/Header.js"
 
 export default function PageLayout({ children }) {
@@ -8,6 +9,7 @@ export default function PageLayout({ children }) {
             <main className="content">
                 {children}
             </main>
+            <Footer/>
         </div>
     )
 }
