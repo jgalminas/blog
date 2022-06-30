@@ -12,7 +12,7 @@ export default function Articles({ posts }) {
     <Fragment>
 
       <Head>
-        <title> Justas's Blog - Articles </title>
+        <title> {`Justas's Blog - Articles`} </title>
         <meta name="description" content="List of all articles on this blog" />
         <link rel="icon" href="/logo.svg" />
       </Head>
