@@ -7,7 +7,7 @@ export default function About() {
     <Fragment>
 
       <Head>
-        <title> Justas's Blog - About </title>
+        <title> {`Justas's Blog - About`} </title>
         <meta name="description" content="Page containing information about the blog" />
         <link rel="icon" href="/logo.svg" />
       </Head>

@@ -23,7 +23,7 @@ export default function Post({ content, relatedPosts, error }) {
         <Fragment>
 
         <Head>
-          <title> {frontmatter.title} </title>
+          <title> {frontmatter?.title} </title>
           <meta name="description" content="Page containing article" />
           <link rel="icon" href="/logo.svg" />
         </Head>

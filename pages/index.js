@@ -11,7 +11,7 @@ export default function Home({ posts }) {
     <Fragment>
 
       <Head>
-        <title> Justas's Blog - Home </title>
+        <title> {`Justas's Blog - Home`} </title>
         <meta name="description" content="The main page of the blog" />
         <link rel="icon" href="/logo.svg"/>
       </Head>
