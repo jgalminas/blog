@@ -6,7 +6,7 @@ export default function RelatedPost({ post, priority }) {
 
     return (
         <article className="related-post-card">
-
+            
             <Image className='img' objectFit='cover' alt={post.alt} height={607.50} width={1080} src={post.img} priority={priority}/>
 
             <div className='text'>

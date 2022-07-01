@@ -18,7 +18,9 @@ export default function Header() {
         <header className="header flex row">
         
             <Link href='/'>
-                <Logo id='logo'/>
+                <a>
+                    <Logo id='logo'/>
+                </a>
             </Link>
 
             <div id='nav-wrapper'>
