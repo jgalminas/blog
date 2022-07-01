@@ -1,0 +1,98 @@
+---
+title: Introduction to Git and Github
+slug: github-and-git-guide
+date: "2021-06-18"
+tags: [beginner, git, github]
+img: https://i.imgur.com/5RFLDoq.jpg
+alt: Image of a laptop
+description: This article will introduce you to Git and teach you the fundamentals using the command-line.
+---
+
+## What is Git?
+
+Git is a version control system and it is the most popular out there because it is incredibly fast, highly scalable, open source and also free. A version control 
+system is simply a piece of software that records changes made in code and stores them in a database called repository. This allows us to view the changes made 
+over time and revert to them if needed. Git provides an effortless way of creating sub-versions (branches) of a project, adding new code and merging to the 
+main code base later on which makes adding new features and colaborating with other developers a breeze.
+
+## How to use Git
+
+Once <a href="https://git-scm.com/" target="_blank">installed</a>, Git can be used in two ways — via a graphical user interface such as GitHub desktop client or the 
+command-line which is, in my opinion, the best way to use Git, especially if you are new to it. Learning to work with the command-line will teach you the ins and 
+outs of Git while also making it rather convenient as most code editors have a command-line terminal built into them so there is no need for switching between 
+applications. It's also worth mentioning that GUI clients typically only support a subset of Git features — another reason to use command-line over GUI.
+
+## Most commonly used commands
+
+These are the most commonly used commands in Git.
+
+### Initialising a local repository
+
+A new Git repository can be created by simply navigating to the root of the folder in command-line and executing the following command
+<CodeBlock lineNum={false} language="shell" text="git init -b <branch name>"/>
+
+The <em><b> `-b <branch name>` </b></em> part can be ommited if you just wish to use the default initial branch name which is <em><b> `"master"` </b></em> unless 
+changed in the Git config.
+
+That's all it takes to create a local Git repository! Now if you already have some files created they can be staged using
+
+<CodeBlock lineNum={false} language="shell" text="git add <file name>"/>
+
+or
+
+<CodeBlock lineNum={false} language="shell" text="git add <file name>"/>
+
+to add all files. If you wish to unstage a file you can use the following command
+
+<CodeBlock lineNum={false} language="shell" text="git reset HEAD <file name>"/>
+
+Once the files are staged you can commit them using
+
+<CodeBlock lineNum={false} language="shell" text="git commit -m <message>"/>
+
+#### Pushing the local repository to Github
+
+In order to push your local repository to Github you need to first have a remote respository created or create one using Github's command-line interface. Then
+you can push your local files to Github in just a few commands.
+
+<CodeBlock lineNum={false} language="shell" text="# linking remote repository to local one
+git remote add origin <remote repository url>"/>
+
+The remote repository url must be a complete url to the repository on GitHub, for example, <em><b> https://github.com/johndoe/awesomerepo.git </b></em>
+
+You can verify this by executing
+
+<CodeBlock lineNum={false} language="shell" text="git remote -v"/>
+
+and now all that is left is to push the changes to Github.
+
+<CodeBlock lineNum={false} language="shell" text="git push origin <branch name>"/>
+
+And voilà! Your local repository is now stored online!
+
+## What is Github?
+
+Github is an online platform where you store your source code. It allows you to access your projects from anywhere and collaborate with other developers.
+
+
+<CodeBlock language="javascript" text="
+  const slug = paths?.params?.slug;
+  const post = getPost(slug);
+
+  const content = await serialize(post , { parseFrontmatter: true });
+
+"/>
+
+Laborum aliqua ipsum adipisicing elit esse ipsum ut dolore dolor elit. Enim aute anim magna aute Lorem. Do consectetur aliquip ullamco magna deserunt duis commodo adipisicing qui eiusmod ullamco sunt occaecat in. Officia non pariatur laborum velit dolore occaecat commodo id duis excepteur. Excepteur veniam cillum fugiat id enim ex et laborum excepteur duis id do. Reprehenderit velit veniam nulla mollit minim anim sint aliquip.
+
+Ad esse non et sunt esse commodo non aute aliqua officia excepteur pariatur anim qui. Ex voluptate in duis ex mollit eu culpa laboris amet Lorem elit amet occaecat. Reprehenderit dolor quis et aliquip eu veniam culpa. Incididunt fugiat nisi ea esse ipsum. Commodo aliquip deserunt elit sint. Exercitation voluptate labore nulla ut adipisicing quis mollit eiusmod exercitation exercitation adipisicing velit nulla commodo.
+
+<WrappedImage src="https://i.imgur.com/hzEkE5u.jpg" alt="image of react logo"/>
+
+## subtitle
+
+Exercitation veniam labore irure aliquip. Laboris cupidatat velit do eiusmod sint laborum qui irure proident in incididunt Lorem id ex. Qui velit sint eu ipsum sit ullamco in. Do velit laboris tempor pariatur sit nostrud cupidatat velit minim consectetur. Ea veniam ipsum mollit ea amet voluptate mollit. Sunt est elit pariatur minim velit est tempor aute culpa occaecat.
+
+Aliqua consequat sint ipsum ut non nulla velit. Quis sint <a href="http://google.com/" target="_blank">Google</a> dolore aliquip ea ea sint sunt sint cupidatat duis sint proident mollit pariatur. Do cillum eiusmod nostrud ut proident commodo commodo ea fugiat. Culpa labore nulla ad incididunt aliquip ad culpa ad laborum ea quis nostrud aute deserunt.
+
+Eiusmod laboris labore enim fugiat ullamco in. Eu esse culpa culpa adipisicing cillum proident elit mollit non. Laborum elit exercitation velit veniam irure deserunt culpa occaecat adipisicing officia eiusmod occaecat. Dolore duis Lorem sunt aliquip. Nisi cupidatat culpa nulla ut.

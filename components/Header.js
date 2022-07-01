@@ -18,7 +18,7 @@ export default function Header() {
         <header className="header flex row">
         
             <Link href='/'>
-                <a>
+                <a aria-label='website logo'>
                     <Logo id='logo'/>
                 </a>
             </Link>
