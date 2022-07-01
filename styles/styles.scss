@@ -15,17 +15,17 @@ $button-hover-color: #118cff;
     --foreground: rgb(51, 51, 51);
     --font-primary: #2E2E2E;
     --font-secondary: #565656;
-    --newsletter-container: rgb(243, 243, 243);
+    --newsletter-container: #2b3a49;
     --tags: #1561a8;
   }
 
   [data-theme='dark'] {
       // dark theme
-      --background: #333333;
+      --background: #262e36;
       --foreground: rgb(240, 240, 240);
       --font-primary: rgb(245, 245, 245);
       --font-secondary: rgb(207, 207, 207);
-      --newsletter-container: rgba(78, 78, 78, 0.425);
+      --newsletter-container: #2b3a49;
       --tags: #4aa8ff;
   }
 
@@ -136,11 +136,8 @@ $button-hover-color: #118cff;
 .newsletter {
     
     padding-top: 30px;
-    padding-bottom: 40px;
-
-    #heading {
-        margin-bottom: 50px;
-    }
+    padding-bottom: 80px;
+    color: white;
 
     #container {
         display: flex;
@@ -379,8 +376,8 @@ $button-hover-color: #118cff;
         padding: 0px;
 
         &.entered {
-            max-height: 500px;
-            padding: 20px;
+            max-height: 1000px;
+            padding: 40px;
         }
 
         &.exited {
