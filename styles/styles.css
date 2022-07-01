@@ -419,6 +419,11 @@ body p {
   font-style: italic;
   font-weight: 500;
 }
+.post p {
+  word-wrap: break-word;
+  width: 100%;
+  white-space: normal;
+}
 
 .related-posts {
   display: flex;
