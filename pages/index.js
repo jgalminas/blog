@@ -19,7 +19,7 @@ export default function Home({ posts }) {
 
       <div className='hero'>
 
-        <h1 align="right"> Hi, my name is Justas. </h1>
+        <h1> Hi, my name is Justas. </h1>
         <h2> Welcome to my blog! Here I write about my experience in the software development space. </h2>
 
         <Link href="/about"> About me </Link>
