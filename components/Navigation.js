@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import useClickOutside from "./hooks/useClickOutside";
 import MenuIcon from '../public/menu.svg';
+import useTransition from './hooks/useTransition.js';
 
 export default function Navigation() {
 
@@ -9,7 +10,7 @@ export default function Navigation() {
     const [isOpen, setOpen] = useState(false);
     const menuRef = useRef();
     const buttonRef = useRef();
-    
+
     useEffect(() => {
 
         setWindowWidth(window.innerWidth);
@@ -20,28 +21,43 @@ export default function Navigation() {
 
     }, [])
 
-    useClickOutside(buttonRef, menuRef, () => setOpen(false));
+    useClickOutside(buttonRef, menuRef, () => toggle(500));
+
+    const [state, enter, exit] = useTransition(0);
 
     const isMobile = (windowWidth < 500) ? true : false;
 
     const navContent = (
-        <ul className="flex row" onClick={() => setOpen(false)}>
+        <ul className="flex row" onClick={() => toggle(500)}>
         <li> <Link href="/"> Home </Link> </li>
         <li> <Link href="/articles"> Articles </Link> </li>
         <li> <Link href="/about"> About me </Link> </li>
         </ul>
     );
     
+    function toggle(delay) {
+
+        if (!isOpen) {
+            
+            setOpen(true);
+            enter()
+        } else {
+            exit();
+            setTimeout(() => setOpen(false), delay);
+        }
+
+    }
+        
     return (
         <nav className="navigation">
 
         {(isMobile) ?
             <div>
-                <button id="nav-button" ref={buttonRef} onClick={() => setOpen(!isOpen)}>
+                <button id="nav-button" ref={buttonRef} onClick={() => toggle(500)}>
                     <MenuIcon/>
                 </button>
                 {isOpen && 
-                    <div ref={menuRef} className="navigation-tray"> { navContent } </div>
+                    <div ref={menuRef} className={`navigation-tray ${state}`}> { navContent } </div>
                 }
             </div>
         
