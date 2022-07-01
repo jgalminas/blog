@@ -26,7 +26,9 @@ export default async (req, res) => {
         res.status(400).json(err.response.data);
 
       }
-    } else {
+    } else if (!email) {
       res.status(400).json({message: 'Email is required'});
+    } else {
+      res.status(500).json({message: 'Bad Request'});
     }
 } 
