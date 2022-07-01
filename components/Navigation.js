@@ -41,7 +41,7 @@ export default function Navigation() {
                     <MenuIcon/>
                 </button>
                 {isOpen && 
-                <div ref={menuRef} className="navigation-tray"> { navContent } </div>
+                    <div ref={menuRef} className="navigation-tray"> { navContent } </div>
                 }
             </div>
         
