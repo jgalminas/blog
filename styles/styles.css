@@ -274,7 +274,7 @@ body p {
   display: flex;
   justify-content: center;
   background-color: var(--background);
-  box-shadow: 0px 40px 40px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 50px 40px 0px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid var(--foreground);
   position: absolute;
   box-sizing: border-box;
@@ -400,13 +400,8 @@ body p {
 .code-block {
   font-family: "Fira Code", sans-serif;
 }
-.code-block button {
-  border: none;
-  width: 35px;
-  height: 35px;
-}
-.code-block button svg {
-  transform: scale(130%);
+.code-block span {
+  background: var(--newsletter-container) !important;
 }
 
 .img {
@@ -415,7 +410,7 @@ body p {
   cursor: pointer;
 }
 .post a {
-  color: #3191EA;
+  color: var(--tags);
   font-style: italic;
   font-weight: 500;
 }

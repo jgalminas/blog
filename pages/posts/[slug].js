@@ -35,7 +35,7 @@ export default function Post({ content, relatedPosts, error }) {
             <p> {frontmatter.description} </p>
             <p> <strong> Published on { getFormattedDate(frontmatter.date) } </strong>  </p>
 
-            <Image className='img' objectFit='cover' height="607.50" width="1080" src={frontmatter.img} priority/>
+            <Image className='img' alt={frontmatter?.alt} objectFit='cover' height="607.50" width="1080" src={frontmatter.img} priority/>
 
 
             <MDXRemote components={components} {...content}/>
