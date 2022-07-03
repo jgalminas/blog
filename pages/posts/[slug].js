@@ -9,11 +9,13 @@ import { getFormattedDate } from '../../utils/time.js';
 import Image from 'next/image';
 import RelatedPost from '../../components/RelatedPost.js';
 
+import dynamic from 'next/dynamic';
 
-import CodeBlock from '../../components/CodeBlock.js';
-import WrappedImage from '../../components/WrappedImage.js';
-
-const components = { CodeBlock, WrappedImage };
+const components = { 
+  CodeBlock: dynamic(() => import('../../components/CodeBlock.js')),
+  WrappedImage: dynamic(() => import('../../components/WrappedImage.js')),
+  HighlightedMessage: dynamic(() => import('../../components/HighlightedMessage.js')),
+};
 
 export default function Post({ content, relatedPosts, error }) {
 

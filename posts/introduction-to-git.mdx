@@ -1,12 +1,14 @@
 ---
-title: Introduction to Git and Github
-slug: github-and-git-guide
+title: Introduction to Git
+slug: introduction-to-git
 date: "2021-06-18"
-tags: [beginner, git, github]
+tags: [beginner, git]
 img: https://i.imgur.com/5RFLDoq.jpg
 alt: Image of a laptop
 description: This article will introduce you to Git and teach you the fundamentals using the command-line.
 ---
+
+{/* <WrappedImage src="https://i.imgur.com/hzEkE5u.jpg" alt="image of react logo"/> */}
 
 ## What is Git?
 
@@ -22,9 +24,18 @@ command-line which is, in my opinion, the best way to use Git, especially if you
 outs of Git while also making it rather convenient as most code editors have a command-line terminal built into them so there is no need for switching between 
 applications. It's also worth mentioning that GUI clients typically only support a subset of Git features — another reason to use command-line over GUI.
 
-## Most commonly used commands
+### Changes in Git repository
 
-These are the most commonly used commands in Git.
+First things first it's important to understand that Git has four main states to describe each file in a repository:
+
+* <b>Untracked:</b> <em>These are files that are new to to the folder and are not currently tracked by the repository</em>
+* <b>Unmodified:</b> <em>These are files that are being tracked, but haven't been modified yet</em>
+* <b>Modified:</b> <em>These are files that are being tracked, have been modified, but have not been staged yet</em>
+* <b>Staged:</b> <em>These are files that are being tracked and to be commited</em>
+
+You can see the state of each file in your repository by executing the following command
+
+<CodeBlock lineNum={false} language="shell" text="git status"/>
 
 ### Initialising a local repository
 
@@ -72,19 +83,6 @@ If you wish to clone a project to a local repository that you can work on, this 
 
 <CodeBlock lineNum={false} language="shell" text="git clone <remote repository url>"/>
 
-### Changes in Git repository
-
-Git has four states to describe each file in a repository:
-
-* <b>Untracked:</b> <em>These are files that are new to to the folder and are not currently tracked by the repository</em>
-* <b>Unmodified:</b> <em>These are files that are being tracked, but haven't been modified yet</em>
-* <b>Modified:</b> <em>These are files that are being tracked, have been modified, but have not been staged yet</em>
-* <b>Staged:</b> <em>These are files that have been commited to the repository.</em>
-
-You can see the state of each file in your repository by executing the following command
-
-<CodeBlock lineNum={false} language="shell" text="git status"/>
-
 ### Seeing commit history
 
 In order to see what commits have been made in a repository the following command can be used
@@ -110,8 +108,10 @@ What if you just commited but forgot to add some files? You can do this
 <CodeBlock lineNum={false} language="shell" text="git add <file name>
 git commit --amend"/>
 
+<HighlightedMessage color="grey" text="
 However, it is important to note that when you amend a commit you aren't just editing the contents you are replacing it with a whole new commit, that's why you
 should not amend anything that has already been pushed to the remote repository as that will cause issues for your colaborators.
+"/>
 
 #### Unstaging a file
 
@@ -125,19 +125,21 @@ Lets say you have done some work and modified a file, but you don't want the cha
 
 <CodeBlock lineNum={false} language="shell" text="git restore <file name>"/>
 
+<HighlightedMessage text="
 Very important to note that this is a dangerous command and the work that you remove will be gone forever, because the file will be replaced with the last
 staged or commited version.
+"/>
 
-## Branching
+### Branching
 
-### What is branching?
+#### What is branching?
 
 Branching is a way for you to split, develop, test and implement new code that doesn't interfere with the main production line. Once you have developed an
 additional feature that you are happy with you can easily merge the branch to the main line. It also allows you to work on more than one area of the project at 
 the time, which useful because it allows colaboration. If you want to learn exactly how branching works, you can read more 
 about it <a href="https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell" target="_blank">here</a>.
 
-### Creating branches
+#### Creating branches
 
 You can create branches via the following command
 
@@ -147,18 +149,38 @@ Most often you will want to create and switch to a branch at the same time which
 
 <CodeBlock lineNum={false} language="shell" text="git checkout -b <branch name>"/>
 
-### Switching between branches
+#### Switching between branches
 
 To simply switch between branches you can use
 
 <CodeBlock lineNum={false} language="shell" text="git checkout <branch name>"/>
 
-### Merging branches
+#### Merging branches
 
-### Merging conflicts
+Once you have written some code in your brand new branch you will want to merge to the main branch. Typically if you are contributing to an open-source project or
+are working in a team you and wanted to merge to the main branch you would
+open a pull request, where the code is reviewed by someone else and then merged together so all you have to do is push the local branch to the remote repository
+and open a pull request there. However, you can also merge branches locally by navigating to your main branch and using the following command
 
-## What is Github?
+<CodeBlock lineNum={false} language="shell" text="git branch <branch you want to merge>"/>
 
-Github is an online platform where you store your source code. It allows you to access your projects from anywhere and collaborate with other developers.
+Once merged you can simply push the main branch to the remote repository.
 
-{/* <WrappedImage src="https://i.imgur.com/hzEkE5u.jpg" alt="image of react logo"/> */}
+#### Merge conflicts
+
+Now merging branches wont always be a smooth process, this can be a slightly tricky sometimes. For example, if the same part of a file has been changed in both
+of the branches you're trying to merge git will halt the process and make you manually resolve the conflict by picking which changes you want to keep. Once you
+have resolved the conflit you will need to commit the merge by executing
+
+<CodeBlock lineNum={false} language="shell" text="git commit"/>
+
+#### Deleting branches
+
+Once you have merged the branch with the main branch you can delete it by using
+
+<CodeBlock lineNum={false} language="shell" text="git branch -d <branch name>"/>
+
+## Conclusion
+
+And that is all, keep in mind this article covers only the most common functionality of Git just to get you started with version control. There is a lot more that 
+Git offers which you can learn about on their <a href="https://git-scm.com/book/en/v2" target="_blank">website</a>.
