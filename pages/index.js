@@ -14,6 +14,7 @@ export default function Home({ posts }) {
         <title> {`Justas's Blog - Home`} </title>
         <meta name="description" content="The main page of the blog" />
         <link rel="icon" href="/logo.svg"/>
+        <meta name="google-site-verification" content="TRbT3ZNq6PzAJKnTKn5dsC_Sp18aZQMvOwLbCPgFhM0" />
       </Head>
 
 
