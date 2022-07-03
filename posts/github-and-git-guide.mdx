@@ -40,17 +40,13 @@ That's all it takes to create a local Git repository! Now if you already have so
 
 or
 
-<CodeBlock lineNum={false} language="shell" text="git add <file name>"/>
+<CodeBlock lineNum={false} language="shell" text="git add ."/>
 
-to add all files. If you wish to unstage a file you can use the following command
-
-<CodeBlock lineNum={false} language="shell" text="git reset HEAD <file name>"/>
-
-Once the files are staged you can commit them using
+to add all files. Once the files are staged you can commit them using
 
 <CodeBlock lineNum={false} language="shell" text="git commit -m <message>"/>
 
-#### Pushing the local repository to Github
+### Pushing the local repository to Github
 
 In order to push your local repository to Github you need to first have a remote respository created or create one using Github's command-line interface. Then
 you can push your local files to Github in just a few commands.
@@ -70,29 +66,99 @@ and now all that is left is to push the changes to Github.
 
 And voilà! Your local repository is now stored online!
 
+### Cloning an existing respository
+
+If you wish to clone a project to a local repository that you can work on, this can be done via the following command
+
+<CodeBlock lineNum={false} language="shell" text="git clone <remote repository url>"/>
+
+### Changes in Git repository
+
+Git has four states to describe each file in a repository:
+
+* <b>Untracked:</b> <em>These are files that are new to to the folder and are not currently tracked by the repository</em>
+* <b>Unmodified:</b> <em>These are files that are being tracked, but haven't been modified yet</em>
+* <b>Modified:</b> <em>These are files that are being tracked, have been modified, but have not been staged yet</em>
+* <b>Staged:</b> <em>These are files that have been commited to the repository.</em>
+
+You can see the state of each file in your repository by executing the following command
+
+<CodeBlock lineNum={false} language="shell" text="git status"/>
+
+### Seeing commit history
+
+In order to see what commits have been made in a repository the following command can be used
+
+<CodeBlock lineNum={false} language="shell" text="git log"/>
+
+The results will be displayed in reverse chronological order. A variety of additional options can be applied to get a narrowed down list. This can be very helpful
+for larger projects with thousands of commits. A comprehensive guide on how to use <b><em> git log </em></b> can be found 
+<a href="https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History" target="_blank">here</a>.
+
+### Undoing stuff
+
+This is where things can get a little tricky and you should really understand what you are doing as it is possible to lose some data if you do it wrong.
+
+#### Amending a commit
+
+If you just commited some files and realised that you forgot to add a message or would like to change it you can do this by executing the following
+
+<CodeBlock lineNum={false} language="shell" text="git commit --amend -m <new message>"/>
+
+What if you just commited but forgot to add some files? You can do this
+
+<CodeBlock lineNum={false} language="shell" text="git add <file name>
+git commit --amend"/>
+
+However, it is important to note that when you amend a commit you aren't just editing the contents you are replacing it with a whole new commit, that's why you
+should not amend anything that has already been pushed to the remote repository as that will cause issues for your colaborators.
+
+#### Unstaging a file
+
+If you wish to unstage a file you can use the following command
+
+<CodeBlock lineNum={false} language="shell" text="git restore --staged <file name>"/>
+
+#### Unmodifying a file
+
+Lets say you have done some work and modified a file, but you don't want the changes anymore. Well, you can unmodify the file with
+
+<CodeBlock lineNum={false} language="shell" text="git restore <file name>"/>
+
+Very important to note that this is a dangerous command and the work that you remove will be gone forever, because the file will be replaced with the last
+staged or commited version.
+
+## Branching
+
+### What is branching?
+
+Branching is a way for you to split, develop, test and implement new code that doesn't interfere with the main production line. Once you have developed an
+additional feature that you are happy with you can easily merge the branch to the main line. It also allows you to work on more than one area of the project at 
+the time, which useful because it allows colaboration. If you want to learn exactly how branching works, you can read more 
+about it <a href="https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell" target="_blank">here</a>.
+
+### Creating branches
+
+You can create branches via the following command
+
+<CodeBlock lineNum={false} language="shell" text="git branch <branch name>"/>
+
+Most often you will want to create and switch to a branch at the same time which you can do with
+
+<CodeBlock lineNum={false} language="shell" text="git checkout -b <branch name>"/>
+
+### Switching between branches
+
+To simply switch between branches you can use
+
+<CodeBlock lineNum={false} language="shell" text="git checkout <branch name>"/>
+
+### Merging branches
+
+### Merging conflicts
+
 ## What is Github?
 
 Github is an online platform where you store your source code. It allows you to access your projects from anywhere and collaborate with other developers.
 
-
-<CodeBlock language="javascript" text="
-  const slug = paths?.params?.slug;
-  const post = getPost(slug);
-
-  const content = await serialize(post , { parseFrontmatter: true });
-
-"/>
-
-Laborum aliqua ipsum adipisicing elit esse ipsum ut dolore dolor elit. Enim aute anim magna aute Lorem. Do consectetur aliquip ullamco magna deserunt duis commodo adipisicing qui eiusmod ullamco sunt occaecat in. Officia non pariatur laborum velit dolore occaecat commodo id duis excepteur. Excepteur veniam cillum fugiat id enim ex et laborum excepteur duis id do. Reprehenderit velit veniam nulla mollit minim anim sint aliquip.
-
-Ad esse non et sunt esse commodo non aute aliqua officia excepteur pariatur anim qui. Ex voluptate in duis ex mollit eu culpa laboris amet Lorem elit amet occaecat. Reprehenderit dolor quis et aliquip eu veniam culpa. Incididunt fugiat nisi ea esse ipsum. Commodo aliquip deserunt elit sint. Exercitation voluptate labore nulla ut adipisicing quis mollit eiusmod exercitation exercitation adipisicing velit nulla commodo.
-
-<WrappedImage src="https://i.imgur.com/hzEkE5u.jpg" alt="image of react logo"/>
-
-## subtitle
-
-Exercitation veniam labore irure aliquip. Laboris cupidatat velit do eiusmod sint laborum qui irure proident in incididunt Lorem id ex. Qui velit sint eu ipsum sit ullamco in. Do velit laboris tempor pariatur sit nostrud cupidatat velit minim consectetur. Ea veniam ipsum mollit ea amet voluptate mollit. Sunt est elit pariatur minim velit est tempor aute culpa occaecat.
-
-Aliqua consequat sint ipsum ut non nulla velit. Quis sint <a href="http://google.com/" target="_blank">Google</a> dolore aliquip ea ea sint sunt sint cupidatat duis sint proident mollit pariatur. Do cillum eiusmod nostrud ut proident commodo commodo ea fugiat. Culpa labore nulla ad incididunt aliquip ad culpa ad laborum ea quis nostrud aute deserunt.
-
-Eiusmod laboris labore enim fugiat ullamco in. Eu esse culpa culpa adipisicing cillum proident elit mollit non. Laborum elit exercitation velit veniam irure deserunt culpa occaecat adipisicing officia eiusmod occaecat. Dolore duis Lorem sunt aliquip. Nisi cupidatat culpa nulla ut.
+{/* <WrappedImage src="https://i.imgur.com/hzEkE5u.jpg" alt="image of react logo"/> */}
