@@ -40,15 +40,19 @@ export default function Post({ content, relatedPosts, error }) {
 
             <MDXRemote components={components} {...content}/>
 
-            <h1> Related Posts </h1>
+            {(relatedPosts.length > 0) &&
+              <Fragment>
+                <h1> Related Posts </h1>
 
-            <div className='related-posts'>
-              {relatedPosts.map((post) => {
-                  return <RelatedPost key={post.slug} post={post}></RelatedPost>
-                })}
-            </div>
+                <div className='related-posts'>
+                  {relatedPosts.map((post) => {
+                      return <RelatedPost key={post.slug} post={post}></RelatedPost>
+                    })}
+                </div>
+              </Fragment>}
 
             </div>
+            
           : <h1 align="middle"> Error occured </h1>}
 
       </Fragment>
