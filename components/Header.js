@@ -1,7 +1,7 @@
 import Navigation from './Navigation.js';
 import ToggleInput from './ToggleInput.js';
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import Logo from '../public/logo.svg';
 
@@ -9,25 +9,49 @@ export default function Header() {
 
     const { theme , setTheme } = useTheme();
     const [current, setCurrent] = useState(theme == 'dark' ? true : false);
+    const [sticky, setSticky] = useState(false);
+    const headerRef = useRef();
+
+    useEffect(() => {
+
+        window.addEventListener('scroll', () => {
+
+            const header = headerRef?.current;
+
+            if (window.scrollY > header.offsetTop) {
+                header.classList.add('sticky');
+                setSticky(true);
+            } else {
+                header.classList.remove('sticky');
+                setSticky(false);
+            }
+        })
+    }, [])
 
     useEffect(() => {
         setTheme(current ? 'dark' : 'light');
     }, [current])
 
     return (
-        <header className="header flex row">
-        
-            <Link href='/'>
-                <a aria-label='website logo'>
-                    <Logo id='logo'/>
-                </a>
-            </Link>
+        <Fragment>
+            <div className={`navigation__padding ${sticky && '--active'}`}></div>   
+            <header ref={headerRef} className='header flex row'>
+                <div className="header__content flex row">
+            
+                    <Link href='/'>
+                        <a aria-label='website logo'>
+                            <Logo id='logo'/>
+                        </a>
+                    </Link>
 
-            <div id='nav-wrapper'>
-                <Navigation/>
-                <ToggleInput value={current} onChange={() => setCurrent(!current)}/>
-            </div>
+                    <div id='nav-wrapper'>
 
-        </header>
+                        <Navigation/>
+                        <ToggleInput value={current} onChange={() => setCurrent(!current)}/>
+                    </div>
+
+                </div>
+            </header>
+        </Fragment>
     )
 }

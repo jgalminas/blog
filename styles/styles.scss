@@ -243,27 +243,53 @@ $button-hover-color: #118cff;
 
 }
 
+.navigation__padding {
+    width: 100%;
+    height: 0px;
+
+    &.--active {
+        height: 70px;
+    }
+}
+
 .header {
+    justify-content: center;
+
+    z-index: 9999;
+    width: 100%;
+
+    border-bottom: 1px solid transparent;
+    transition: border-bottom ease-in 200ms;
+
+    &.sticky {
+        position: fixed;
+        top: 0;
+        background-color: var(--background);
+        width: 100%;
+        align-self: center;
+        border-bottom: 1px solid rgb(189, 189, 189);
+        box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.header__content {
+
+    width: 100%;
+    max-width: $content-width;
 
     #logo {
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
         margin-right: 40px;
         cursor: pointer;
+        vertical-align: middle;
     }
 
     font-weight: 600;
     box-sizing: border-box;
-    align-items: center;
     
+    padding: 20px $content-padding 20px $content-padding;
 
-    padding: 20px $content-padding 10px $content-padding;
-
-    margin-left: auto;
-    margin-right: auto;
-
-    width: 100%;
-    max-width: $content-width;
 }
 
 .toggle-switch {
@@ -546,10 +572,6 @@ $button-hover-color: #118cff;
     border-radius: 5px;
     
     cursor: pointer;
-
-    &:hover {
-
-    }
 }
 
 
@@ -568,11 +590,11 @@ $button-hover-color: #118cff;
     }
 
     h3 {
-        font-size: 22px;
+        font-size: 1.3em;
     }
 
     h4 {
-        font-size: 20px;
+        font-size: 1.2em;
     }
     
 }
@@ -626,7 +648,7 @@ $button-hover-color: #118cff;
 .highlighted-message {
 
     $red: #f84f4f;
-    $grey: #64788d;
+    $grey: #6b7b8b;
 
     &.grey {
 
