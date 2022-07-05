@@ -4,6 +4,8 @@ import { getPostsByDate } from '../utils/mdxUtil.js';
 import RelatedPost from '../components/RelatedPost.js';
 import Newsletter from '../components/Newsletter.js';
 import Link from 'next/link';
+import Image from 'next/image.js';
+import Hero from '../public/hero.svg';
 
 export default function Home({ posts }) {
 
@@ -20,10 +22,16 @@ export default function Home({ posts }) {
 
       <div className='hero'>
 
-        <h1> Hi, my name is Justas. </h1>
-        <h2> Welcome to my blog! Here I write about my experience in the software development space. </h2>
+        <div className='__text'>
+          <h1> Hi, my name is Justas. </h1>
+          <h2> Welcome to my blog! Here I write about my experience in the software development space. </h2>
+          <Link href="/about"> About me </Link>
+        </div>
 
-        <Link href="/about"> About me </Link>
+        <div className='__img'>
+          <Image src='/hero.svg' height="607.50" width="1080"/>
+        </div>
+
 
       </div>
 

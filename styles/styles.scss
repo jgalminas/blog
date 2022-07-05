@@ -70,6 +70,7 @@ $button-hover-color: #118cff;
         font-size: 18px;
     }
 
+    overflow: hidden;
 }
 
 .flex {
@@ -88,49 +89,88 @@ $button-hover-color: #118cff;
 
     display: flex;
     flex-direction: column;
-
+    width: 100%;
     gap: 40px;
+    position: relative;
 
-    padding: 0px 0px 35px 0px;
+    padding: 35px 0px 35px 0px;
+
+
+
+    .__text {
+
+        width: 80%;
+        align-self: center;
+
+        h1 {
+            font-size: 1.5em;
+            margin: 0px;
+            color: var(--font-primary);
+            padding-bottom: 20px;
+            
+            @include portrait-phones {
+                font-size: 2.2em;
+            }
+    
+        }
+        h2 {
+            font-size: 1.4em;
+            font-weight: 400;
+            color: var(--font-secondary);
+            margin: 0px;
+            padding-bottom: 30px;
+            font-size: 18px;
+
+        }
+
+        a {
+            background-color: $button-color;
+            padding: 10px 20px 10px 20px;
+            border-radius: 5px;
+    
+            width: fit-content;
+            text-decoration: none;
+            font-size: 16px;
+            color: #ffffff;
+    
+            transition: ease-in-out 300ms;
+    
+            &:hover {
+                background-color: $button-hover-color;
+            }
+        }
+    }
+
+    .__img {
+        width: 80%;
+        align-self: center;
+        transform: scale(140%);
+        padding-top: 20px;  
+    }
+
 
     @include portrait-phones {
-        padding: 10% 5% 10% 5%;
+        padding: 10% 0% 10% 0%;
     }
-    
 
-    h1 {
-        text-align: right;
-        font-size: 2.5em;
-        margin: 0px;
-        color: var(--font-primary);
+    @include tablets {
+        flex-direction: row;
 
-        @include portrait-phones {
-            font-size: 3em;
+        .__img {
+            position: relative;
+            width: 60%;
+            transform: scale(130%);        
+            align-self: center;
         }
 
-    }
-    h2 {
-        font-size: 2em;
-        color: var(--font-secondary);
-        margin: 0px;
-    }
-
-    a {
-        background-color: $button-color;
-        padding: 10px 20px 10px 20px;
-        border-radius: 5px;
-
-        width: fit-content;
-        text-decoration: none;
-        font-size: 16px;
-        color: #ffffff;
-
-        transition: ease-in-out 300ms;
-
-        &:hover {
-            background-color: $button-hover-color;
+        .__text {
+            width: 40%;
         }
     }
+
+
+
+
 }
 
 .newsletter {
