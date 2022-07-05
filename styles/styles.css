@@ -97,7 +97,7 @@ body p {
   background-color: #118cff;
 }
 .hero .__img {
-  width: 80%;
+  width: 100%;
   align-self: center;
   padding-top: 20px;
 }
@@ -109,12 +109,12 @@ body p {
 @media screen and (min-width: 768px) {
   .hero {
     flex-direction: row;
+    padding-bottom: 130px;
   }
   .hero .__img {
     width: 60%;
-    transform: scale(130%) translateX(-10%);
+    transform: scale(160%) translateX(-7.5%);
     align-self: center;
-    overflow: hidden;
   }
   .hero .__text {
     width: 40%;

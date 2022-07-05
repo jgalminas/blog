@@ -23,8 +23,8 @@ export default function Home({ posts }) {
       <div className='hero'>
 
         <div className='__text'>
-          <h1> Hi, my name is Justas. </h1>
-          <h2> Welcome to my blog! Here I write about my experience in the software development space. </h2>
+          <h1> All about software development </h1>
+          <h2> Hello, my name is Justas and welcome to my blog! Here I write about my experience in the software development space. </h2>
           <Link href="/about"> About me </Link>
         </div>
 

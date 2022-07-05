@@ -142,7 +142,7 @@ $button-hover-color: #118cff;
     }
 
     .__img {
-        width: 80%;
+        width: 100%;
         align-self: center;
         // transform: scale(140%);
         padding-top: 20px;  
@@ -155,12 +155,11 @@ $button-hover-color: #118cff;
 
     @include tablets {
         flex-direction: row;
-
+        padding-bottom: 130px;
         .__img {
             width: 60%;
-            transform: scale(130%) translateX(-10%);      
+            transform: scale(160%)  translateX(-7.5%);      
             align-self: center;
-            overflow: hidden;
         }
 
         .__text {
