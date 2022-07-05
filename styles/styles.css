@@ -111,10 +111,10 @@ body p {
     flex-direction: row;
   }
   .hero .__img {
-    position: relative;
     width: 60%;
-    transform: scale(130%);
+    transform: scale(130%) translateX(-10%);
     align-self: center;
+    overflow: hidden;
   }
   .hero .__text {
     width: 40%;

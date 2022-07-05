@@ -157,10 +157,10 @@ $button-hover-color: #118cff;
         flex-direction: row;
 
         .__img {
-            position: relative;
             width: 60%;
-            transform: scale(130%);        
+            transform: scale(130%) translateX(-10%);      
             align-self: center;
+            overflow: hidden;
         }
 
         .__text {
