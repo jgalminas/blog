@@ -248,7 +248,7 @@ $button-hover-color: #118cff;
     height: 0px;
 
     &.--active {
-        height: 70px;
+        height: 65px;
     }
 }
 
@@ -262,8 +262,10 @@ $button-hover-color: #118cff;
     transition: border-bottom ease-in 200ms;
 
     &.sticky {
+
         position: fixed;
         top: 0;
+
         background-color: var(--background);
         width: 100%;
         align-self: center;
@@ -288,7 +290,7 @@ $button-hover-color: #118cff;
     font-weight: 600;
     box-sizing: border-box;
     
-    padding: 20px $content-padding 20px $content-padding;
+    padding: 15px $content-padding 15px $content-padding;
 
 }
 

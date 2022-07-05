@@ -178,7 +178,7 @@ body p {
   height: 0px;
 }
 .navigation__padding.--active {
-  height: 70px;
+  height: 65px;
 }
 
 .header {
@@ -203,7 +203,7 @@ body p {
   max-width: 1024px;
   font-weight: 600;
   box-sizing: border-box;
-  padding: 20px 30px 20px 30px;
+  padding: 15px 30px 15px 30px;
 }
 .header__content #logo {
   width: 35px;
