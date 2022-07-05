@@ -82,7 +82,7 @@ body p {
   font-size: 18px;
 }
 .hero .__text a {
-  background-color: #0074e0;
+  background-color: #5A6EF2;
   padding: 10px 20px 10px 20px;
   border-radius: 5px;
   width: -webkit-fit-content;
@@ -163,7 +163,7 @@ body p {
   padding: 10px;
   border-radius: 5px;
   border: none;
-  background-color: #0074e0;
+  background-color: #5A6EF2;
   color: #ffffff;
   cursor: pointer;
   font-size: 16px;
@@ -230,7 +230,7 @@ body p {
 .header__content {
   width: 100%;
   max-width: 1024px;
-  font-weight: 600;
+  font-weight: 500;
   box-sizing: border-box;
   padding: 15px 30px 15px 30px;
 }
