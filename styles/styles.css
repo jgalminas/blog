@@ -99,7 +99,6 @@ body p {
 .hero .__img {
   width: 80%;
   align-self: center;
-  transform: scale(140%);
   padding-top: 20px;
 }
 @media screen and (min-width: 668px) {

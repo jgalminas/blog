@@ -29,7 +29,7 @@ export default function Home({ posts }) {
         </div>
 
         <div className='__img'>
-          <Image src='/hero.svg' height="607.50" width="1080"/>
+          <Image src='/hero.svg' height="607.50" width="1080" priority/>
         </div>
 
 
