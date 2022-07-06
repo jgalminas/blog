@@ -113,7 +113,7 @@ body p {
   }
   .hero .__img {
     width: 60%;
-    transform: scale(160%) translateX(-7.5%);
+    transform: scale(130%);
     align-self: center;
   }
   .hero .__text {
