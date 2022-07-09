@@ -6,6 +6,8 @@ import Newsletter from '../components/Newsletter.js';
 import Link from 'next/link';
 import Image from 'next/image.js';
 import Hero from '../public/hero.svg';
+import Arrow from '../public/arrow.svg';
+import Mouse from '../public/mouse.svg';
 
 export default function Home({ posts }) {
 
@@ -23,31 +25,35 @@ export default function Home({ posts }) {
       <div className='hero'>
 
         <div className='__text'>
-          <h1> All about software development </h1>
-          <h2> Hello, my name is Justas and welcome to my blog! Here I write about my experience in the software development space. </h2>
-          <Link href="/about"> About me </Link>
+          <h1> Learn Software Development With Me </h1>
+          <h2> Welcome to my blog! Here I write about my experience in the software development space. </h2>
+
+          <div className='__buttons'>
+            <p className='__start-reading'> Start Reading <Mouse/> </p>
+            <Link href="/about"><a className='__about-me'> About me <Arrow/> </a></Link>
+          </div>
+
+          <div className='__big-circle'></div>
+          <div className='__medium-circle'></div>
+          <div className='__small-circle'></div>
+
         </div>
 
-        <div className='__img'>
-          <Image src='/hero.svg' height="607.50" width="1080" priority/>
-        </div>
 
 
       </div>
 
-      <Newsletter/>
-
-
-
       <div className='posts'>
 
-        <h2> Recently added </h2>
+        <h2 className='__heading'> Recent Articles </h2>
 
         {posts.map((post) => {
           return <RelatedPost key={post.slug} post={post}/>
         })}
 
       </div>
+
+      <Newsletter/>
 
 
     </Fragment>

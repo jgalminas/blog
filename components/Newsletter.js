@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Email from '../public/email.svg';
 
 export default function Newsletter() {
 
@@ -35,19 +36,30 @@ export default function Newsletter() {
   return (
     <div className="newsletter">
 
-        <div id="container">
+        
+          <div className='__big-circle'></div>
+          <div className='__medium-circle'></div>
+          <div className='__small-circle'></div>
 
-        <h3 id="message"> Subscribe to my newsletter to receive notifications when new articles are released! </h3>
+        <div className="__container">
+
+        <h1 className="__heading"> Newsletter </h1>
+
+        <h3 className="__message"> Subscribe to my newsletter to receive notifications when new articles are released! </h3>
 
         <form onSubmit={(e) => {e.preventDefault(); subscribe(email);}}>
-            <input required id="input" type="email" placeholder="enter your email" value={email}
-            onChange={(e) => { setEmail(e.target.value); setButton({value:'Subscribe', class: ''}) }}
-            />
+            <div className="__email-container">
+              <Email className='__email-icon'/>
+              <input required id="input" type="email" value={email}
+              onChange={(e) => { setEmail(e.target.value); setButton({value:'Subscribe', class: ''}) }}
+              />
+            </div>
+
             <input disabled={loading} className={button.class} id="button" type="submit" value={button.value}/>
         </form>
 
         {errorMessage &&
-          <p align="middle" id="error-message"> {errorMessage} </p>
+          <p align="middle" className="__error-message"> {errorMessage} </p>
         }
 
         </div>
