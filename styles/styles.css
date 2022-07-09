@@ -7,18 +7,22 @@
   --font-primary: #1C1852;
   --font-secondary: #4F5D79;
   --newsletter-container: #2b3a49;
-  --tags: #5431E2;
+  --accent: #5431E2;
   --card-background: rgba(249, 249, 249, 0.8);
+  --opaque-background: rgba(249, 249, 249, 0.25);
+  --border: rgba(52, 61, 71, 0.2);
 }
 
 [data-theme=dark] {
   --background: #262e36;
   --foreground: rgb(240, 240, 240);
   --font-primary: rgb(245, 245, 245);
-  --font-secondary: rgb(207, 207, 207);
+  --font-secondary: rgb(224, 224, 224);
   --newsletter-container: #2b3a49;
-  --tags: #4aa8ff;
-  --card-background: rgba(249, 249, 249, 0.8);
+  --accent: #3191EA;
+  --card-background: rgba(52, 61, 71, 0.8);
+  --opaque-background: rgba(38, 46, 54, 0.25);
+  --border: rgba(249, 249, 249, 0.3);
 }
 
 html {
@@ -62,7 +66,7 @@ body p {
   top: 8%;
   transform: translate(-50%, -50%);
   border-radius: 100vw;
-  background: linear-gradient(146.84deg, #5431E2 14.08%, rgba(243, 243, 243, 0.25) 84.73%);
+  background: linear-gradient(146.84deg, #5431E2 14.08%, var(--opaque-background) 84.73%);
   z-index: -1;
 }
 
@@ -74,7 +78,7 @@ body p {
   left: 86%;
   top: 65%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(141.45deg, #FFB6B6 14.24%, rgba(243, 243, 243, 0.25) 85.66%);
+  background: linear-gradient(146.84deg, #FFB6B6 14.08%, var(--opaque-background) 84.73%);
   z-index: -1;
 }
 
@@ -86,7 +90,7 @@ body p {
   left: 62%;
   top: -15%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(149.11deg, #3191EA 12.1%, rgba(243, 243, 243, 0.25) 91.23%);
+  background: linear-gradient(149.11deg, #3191EA 14.08%, var(--opaque-background) 84.73%);
   z-index: -1;
 }
 
@@ -191,7 +195,7 @@ body p {
   margin: 0px;
   font-size: 1em;
   font-weight: 500;
-  color: #5431E2;
+  color: var(--accent);
   line-height: 40px;
   vertical-align: middle;
 }
@@ -199,7 +203,12 @@ body p {
   vertical-align: middle;
   padding-left: 10px;
 }
+.hero .__text .__buttons .__start-reading svg .mouse_svg__outer {
+  stroke: var(--accent);
+  stroke-width: 2px;
+}
 .hero .__text .__buttons .__start-reading svg .mouse_svg__wheel {
+  fill: var(--accent);
   -webkit-animation: 1500ms mouse_svg_animation infinite;
           animation: 1500ms mouse_svg_animation infinite;
 }
@@ -214,11 +223,12 @@ body p {
   line-height: 40px;
   vertical-align: middle;
   text-decoration: none;
-  color: var(--font-primary);
+  color: var(--font-secondary);
 }
 .hero .__text .__buttons .__about-me svg {
   vertical-align: middle;
   padding-left: 10px;
+  fill: var(--font-secondary);
 }
 
 .newsletter {
@@ -343,7 +353,7 @@ body p {
   }
 }
 .newsletter form #button:hover {
-  background-color: #118cff;
+  background-color: #3191EA;
 }
 .newsletter form #button.loading {
   background-color: #b3b3b3;
@@ -393,10 +403,10 @@ body p {
   }
 }
 .newsletter form #input:hover {
-  outline: 1px solid #198ffd;
+  outline: 1px solid #5431E2;
 }
 .newsletter form #input:focus {
-  outline: 1px solid #198ffd;
+  outline: 1px solid #5431E2;
 }
 
 .navigation__padding {
@@ -421,10 +431,10 @@ body p {
   top: 0;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  background-color: rgba(243, 243, 243, 0.7);
+  background-color: rgba(var(--background), 0.7);
   width: 100%;
   align-self: center;
-  border-bottom: 1px solid rgb(219, 219, 219);
+  border-bottom: 1px solid var(--border);
 }
 
 .header__content {
@@ -592,7 +602,7 @@ body p {
   width: fit-content;
   border-radius: 15px;
   background-color: transparent;
-  color: #5431E2;
+  color: var(--accent);
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
