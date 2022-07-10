@@ -8,8 +8,10 @@ import path from 'path';
 import { getFormattedDate } from '../../utils/time.js';
 import Image from 'next/image';
 import RelatedPost from '../../components/RelatedPost.js';
+import Newsletter from '../../components/Newsletter.js';
 
 import dynamic from 'next/dynamic';
+import Tags from '../../components/Tags.js';
 
 const components = { 
   CodeBlock: dynamic(() => import('../../components/CodeBlock.js')),
@@ -33,25 +35,34 @@ export default function Post({ content, relatedPosts, error }) {
         {content && !error ?
             <div className="post">
 
-            <h1> {frontmatter.title} </h1>
-            <p> {frontmatter.description} </p>
-            <p> <strong> Published on { getFormattedDate(frontmatter.date) } </strong>  </p>
+            {/* <Image className='img' alt={frontmatter?.alt} objectFit='cover' height="607.50" width="1080" src={frontmatter.img} priority/> */}
 
-            <Image className='img' alt={frontmatter?.alt} objectFit='cover' height="607.50" width="1080" src={frontmatter.img} priority/>
+            
+            <Tags tags={frontmatter.tags}/>
+
+            <h1 className='__title'> {frontmatter.title} </h1>
+            <p className='__description'> {frontmatter.description} </p>
+            <p className='__date'> Published on  <span> { getFormattedDate(frontmatter.date) } </span>  </p>
 
 
-            <MDXRemote components={components} {...content}/>
+            <div className='__content'>
+              <MDXRemote components={components} {...content}/>
+            </div>
 
             {(relatedPosts.length > 0) &&
-              <Fragment>
-                <h1> Related Posts </h1>
 
-                <div className='related-posts'>
+              <div className='related-posts'>
+              
+
+                  <h1 className='__heading'> Related Articles </h1>
+
                   {relatedPosts.map((post) => {
                       return <RelatedPost key={post.slug} post={post}></RelatedPost>
-                    })}
-                </div>
-              </Fragment>}
+                  })}
+              </div>
+            }
+
+            <Newsletter/>
 
             </div>
             

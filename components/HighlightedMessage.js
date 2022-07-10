@@ -1,12 +1,9 @@
 
-export default function HighlightedMessage({ color, text }) {
-
-  // colors -> red, grey
+export default function HighlightedMessage({ text }) {
 
   return (
-    <div className={`highlighted-message ${color}`}> 
-        <div> ! </div>
-        <p> { text } </p>
-    </div>
+    <p className={`highlighted-message`}> 
+        { text }
+    </p>
   )
 }

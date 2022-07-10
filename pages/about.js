@@ -15,7 +15,7 @@ export default function About() {
       <h1> About me </h1>
 
       <div className='about-content'>
-
+      
       <h2>
         Hello! My name is Justas and I am a computer science and software development student.
       </h2>
