@@ -51,6 +51,8 @@ export default function Home({ posts }) {
           return <RelatedPost key={post.slug} post={post}/>
         })}
 
+      <Link href="/articles"><a className='__all-button'> All Articles <Arrow/> </a></Link>
+
       </div>
 
       <Newsletter/>

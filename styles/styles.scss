@@ -65,7 +65,7 @@ $button-hover-color: #3191EA;
     @media screen and (min-width: 2560px) { @content; }
 }
 
-
+// MIGHT BE UNNEEDED
 @mixin Themed($background, $font, $p) {
     background-color: $background;
     color: $font;
@@ -92,6 +92,30 @@ $button-hover-color: #3191EA;
     }
 
     overflow: hidden;
+}
+
+@mixin arrow-button($color) {
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 40px;
+    vertical-align: middle;
+
+    text-decoration: none;
+    color: $color;
+
+    svg {
+        vertical-align: middle;
+        padding-left: 10px;
+        fill: $color;
+    }
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.5em;
+      line-height: 2em;
+      margin: 0px;
+    color: var(--font-primary); 
 }
 
 .flex {
@@ -285,20 +309,7 @@ $button-hover-color: #3191EA;
             }
 
             .__about-me {
-                font-size: 1em;
-                font-weight: 500;
-                line-height: 40px;
-                vertical-align: middle;
-
-                text-decoration: none;
-                color: var(--font-secondary);
-
-                svg {
-                    vertical-align: middle;
-                    padding-left: 10px;
-                    fill: var(--font-secondary);
-                }
-
+                @include arrow-button(var(--font-secondary));
             }
 
 
@@ -358,14 +369,13 @@ $button-hover-color: #3191EA;
     }
 
     .__heading {
-                
+
         font-weight: 600;
         font-size: 1.5em;
         line-height: 2em;
         margin: 0px;
-        text-align: center;
         padding-bottom: 10px;
-
+        
         color: var(--font-primary);
 
         @include large-phones {
@@ -744,6 +754,11 @@ $button-hover-color: #3191EA;
                 }
             }
 
+            .__all-button {
+                @include arrow-button(var(--font-primary));
+                align-self: flex-end;
+            }
+
         }
 
     }
@@ -803,15 +818,17 @@ $button-hover-color: #3191EA;
         font-size: 2.5em;
         line-height: 2.5em;
         align-self: center;
+        font-weight: 600;
     }
 
     display: flex;
     flex-direction: column;
     gap: 30px;
 
-    h2 {
+    .__year {
         margin: 0px;
         font-size: 2em;
+        font-weight: 600;
     }
 
 }
@@ -996,13 +1013,45 @@ $button-hover-color: #3191EA;
     
 }
 
+.about__heading {
+    font-size: 2.5em;
+    line-height: 2.5em;
+    text-align: center;
+    font-weight: 600;
+}
+
 .about-content {
     display: flex;
     flex-direction: column;
+    gap: 50px;
+
+
+    .__card {
+        width: 100%;
+        box-sizing: border-box;
+        background-color: var(--card-background);
+        border-radius: 40px;
+        padding: 40px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+
+        @include tablets {
+            width: 50%;
+        }
+
+        p {
+            word-wrap:break-word;
+            width: 100%;
+            white-space: normal;
+        }
+    }
+
+    @include tablets {
+        flex-direction: row;
+    }
 }
 
 .highlight {
-    color: var(--tags);
+    color: var(--accent);
 }
 
 .footer {

@@ -28,7 +28,7 @@ export default function Articles({ posts }) {
             posts[key].map((post, index) => {
               return (
                 <Fragment key={key + index}>
-                {index === 0 ? <h2 key={key}> {key} </h2> : null}
+                {index === 0 ? <h2 className='__year' key={key}> {key} </h2> : null}
                 <RelatedPost key={post.slig} post={post}/>
                 </Fragment>
               )
