@@ -21,14 +21,14 @@ export default function Articles({ posts }) {
 
       <div className='all-articles'>
 
-      <h1 className='__heading'> All articles </h1>
+      <h1 className='all-articles__heading'> All articles </h1>
 
         {years.map((key) => {
           return (
             posts[key].map((post, index) => {
               return (
                 <Fragment key={key + index}>
-                {index === 0 ? <h2 className='__year' key={key}> {key} </h2> : null}
+                {index === 0 ? <h2 className='all-articles__year' key={key}> {key} </h2> : null}
                 <RelatedPost key={post.slig} post={post}/>
                 </Fragment>
               )
@@ -36,9 +36,10 @@ export default function Articles({ posts }) {
           )
         })}
         
-        <Newsletter/>
 
       </div>
+
+      <Newsletter/>
 
     </Fragment>
 

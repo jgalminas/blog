@@ -2,23 +2,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Tags from './Tags.js';
 
-export default function RelatedPost({ post, priority }) {
+export default function RelatedPost({ post }) {
 
     return (
-        <article className="related-post-card">
+        <Link href='/posts/[slug]' as={'/posts/' + post.slug}>
+        <article className="related-posts__card">
             
-            {/* <Image className='img' objectFit='cover' alt={post.alt} height={607.50} width={1080} src={post.img} priority={priority}/> */}
+            <Tags tags={post.tags}/>
+            <h3 className='related-posts__card__heading'> { post.title } </h3>
 
-            <div className='__text'>
-
-                <Tags tags={post.tags}/>
-
-                <Link href='/posts/[slug]' as={'/posts/' + post.slug}><h2> { post.title } </h2></Link>
-
-                <p> { post.description } </p>
-
-            </div>
+            <p className='related-posts__card__description'> { post.description } </p>
 
         </article>
+        </Link>
     )
 }

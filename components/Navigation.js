@@ -2,9 +2,9 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import useClickOutside from "./hooks/useClickOutside";
 import MenuIcon from '../public/menu.svg';
-import useTransition from './hooks/useTransition.js';
+import { createPortal } from "react-dom";
 
-export default function Navigation() {
+export default function Navigation({ headerRef }) {
 
     const [windowWidth, setWindowWidth] = useState(0);
     const [isOpen, setOpen] = useState(false);
@@ -21,31 +21,34 @@ export default function Navigation() {
 
     }, [])
 
-    useClickOutside(buttonRef, menuRef, () => toggle(500));
+    useClickOutside(buttonRef, menuRef, () => toggle());
 
-    const [state, enter, exit] = useTransition(0);
 
     const isMobile = (windowWidth < 500) ? true : false;
 
     const navContent = (
-        <ul className="flex row" onClick={() => toggle(500)}>
+        <ul className="flex row" onClick={() => toggle()}>
         <li> <Link href="/"> Home </Link> </li>
         <li> <Link href="/articles"> Articles </Link> </li>
         <li> <Link href="/about"> About me </Link> </li>
         </ul>
     );
     
-    function toggle(delay) {
+    function toggle() {
 
-        if (!isOpen) {
-            
-            setOpen(true);
-            enter()
-        } else {
-            exit();
-            setTimeout(() => setOpen(false), delay);
+        if (isMobile) {
+            const header = headerRef?.current;
+
+            if (!isOpen) {
+    
+                setOpen(true);
+                header.classList.add('--open');
+            } else {
+                
+                setOpen(false)
+                header.classList.remove('--open');
+            }
         }
-
     }
         
     return (
@@ -53,11 +56,16 @@ export default function Navigation() {
 
         {(isMobile) ?
             <div>
-                <button id="nav-button" ref={buttonRef} onClick={() => toggle(500)}>
+                <button id="nav-button" ref={buttonRef} onClick={() => toggle()}>
                     <MenuIcon/>
                 </button>
-                {isOpen && 
-                    <div ref={menuRef} className={`navigation-tray ${state}`}> { navContent } </div>
+                {isOpen && typeof document !== 'undefined' &&
+
+                    createPortal(
+                        <div ref={menuRef} className='navigation-tray'> { navContent } </div>
+                        , document.querySelector('.header__content')
+                    )
+
                 }
             </div>
         

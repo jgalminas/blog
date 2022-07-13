@@ -37,15 +37,17 @@ export default function Post({ content, relatedPosts, error }) {
 
             {/* <Image className='img' alt={frontmatter?.alt} objectFit='cover' height="607.50" width="1080" src={frontmatter.img} priority/> */}
 
-            
-            <Tags tags={frontmatter.tags}/>
+            <div className='post__front'>
 
-            <h1 className='__title'> {frontmatter.title} </h1>
-            <p className='__description'> {frontmatter.description} </p>
-            <p className='__date'> Published on  <span> { getFormattedDate(frontmatter.date) } </span>  </p>
+              <Tags tags={frontmatter.tags}/>
+              <h1 className='post__front__title'> {frontmatter.title} </h1>
+              <p className='post__front__description'> {frontmatter.description} </p>
+              <p className='post__front__date'> Published on  <span> { getFormattedDate(frontmatter.date) } </span>  </p>
 
+            </div>
+          
 
-            <div className='__content'>
+            <div className='post__content'>
               <MDXRemote components={components} {...content}/>
             </div>
 

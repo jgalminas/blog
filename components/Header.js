@@ -9,7 +9,6 @@ export default function Header() {
 
     const { theme , setTheme } = useTheme();
     const [current, setCurrent] = useState(theme == 'dark' ? true : false);
-    const [sticky, setSticky] = useState(false);
     const headerRef = useRef();
 
     useEffect(() => {
@@ -18,13 +17,16 @@ export default function Header() {
 
             const header = headerRef?.current;
 
-            if (window.scrollY > header.offsetTop) {
-                header.classList.add('sticky');
-                setSticky(true);
-            } else {
-                header.classList.remove('sticky');
-                setSticky(false);
+            try {
+                if (window.scrollY > header.offsetTop) {
+                    header.classList.add('--active');
+                } else {
+                    header.classList.remove('--active');
+                }
+            } catch {
+                
             }
+
         })
     }, [])
 
@@ -34,7 +36,7 @@ export default function Header() {
 
     return (
         <Fragment>
-            <div className={`navigation__padding ${sticky && '--active'}`}></div>   
+            <div className='header__padding'></div>   
             <header ref={headerRef} className='header flex row'>
                 <div className="header__content flex row">
             
@@ -46,7 +48,7 @@ export default function Header() {
 
                     <div id='nav-wrapper'>
 
-                        <Navigation/>
+                        <Navigation headerRef={headerRef}/>
                         <ToggleInput value={current} onChange={() => setCurrent(!current)}/>
                     </div>
 

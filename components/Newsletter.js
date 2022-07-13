@@ -35,7 +35,6 @@ export default function Newsletter() {
 
   return (
     <div className="newsletter">
-
         
           <div className='__big-circle'></div>
           <div className='__medium-circle'></div>
@@ -43,7 +42,7 @@ export default function Newsletter() {
 
         <div className="__container">
 
-        <h1 className="__heading"> Newsletter </h1>
+        <h2 className="newsletter__heading"> Newsletter </h2>
 
         <h3 className="__message"> Subscribe to my newsletter to receive notifications when new articles are released! </h3>
 

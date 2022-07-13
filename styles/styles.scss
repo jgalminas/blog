@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 $color-link: #3191EA;
@@ -10,6 +8,11 @@ $content-padding: 30px;
 
 $button-color: #5431E2;
 $button-hover-color: #3191EA;
+
+
+// Side Margin
+$side-margin: 30px;
+$side-margin-total: $side-margin * 2;
 
 :root {
     // default theme
@@ -77,21 +80,14 @@ $button-hover-color: #3191EA;
 
  html {
     overflow-y: scroll;
+    font-family: "Poppins", sans-serif;
  }
 
  body {
     margin: 0px;
-    font-family: "Poppins", sans-serif;
-    font-size: 17px;
-
+    width: 100%;
     @include Themed(var(--background), var(--font-primary), var(--font-secondary));
-
-    p {
-        line-height: 30px;
-        font-size: 18px;
-    }
-
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 @mixin arrow-button($color) {
@@ -99,6 +95,7 @@ $button-hover-color: #3191EA;
     font-weight: 500;
     line-height: 40px;
     vertical-align: middle;
+    font-style: normal;
 
     text-decoration: none;
     color: $color;
@@ -110,12 +107,51 @@ $button-hover-color: #3191EA;
     }
 }
 
-h1 {
+h2 {
     font-weight: 600;
     font-size: 1.5em;
-      line-height: 2em;
-      margin: 0px;
-    color: var(--font-primary); 
+    line-height: 2em;
+    color: var(--font-primary);
+
+    @include large-phones {
+        font-size: 2em;
+        line-height: 2.5em;
+    }
+}
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    font-weight: 600;
+
+    @include large-phones {
+        font-size: 1.8em;
+    }
+}
+
+h4 {
+    font-size: 1.4em;
+    line-height: 2em;
+    font-weight: 600;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.8em;
+
+    @include portrait-phones {
+        font-size: 1.1em;
+    }
+}
+
+a {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+}
+
+b {
+    font-weight: 600;
 }
 
 .flex {
@@ -139,7 +175,7 @@ h1 {
     padding-bottom: 45%;
 
     left: 13%;
-    top: 8%;
+    top: 25%;
     transform: translate(-50%, -50%);
 
     border-radius: 100vw;
@@ -173,7 +209,7 @@ h1 {
     border-radius: 100vw;
     
     left: 62%;
-    top: -15%;
+    top: -5%;
     transform: translate(-50%, -50%);
 
     background: linear-gradient(149.11deg, #3191EA 14.08%, var(--opaque-background) 84.73%);
@@ -184,12 +220,17 @@ h1 {
 
     display: flex;
     flex-direction: column;
-    width: 100%;
     gap: 40px;
-    padding: 20% 0% 20% 0%;
-    position: relative;
 
+    width: calc(100% - $side-margin-total);
+    margin: 0px $side-margin 0px $side-margin;
+
+    padding: 10% 0% 10% 0%;
+
+    position: relative;
     justify-content: center;
+
+
 
 
     .__text {
@@ -286,7 +327,6 @@ h1 {
                 color: var(--accent);
                 line-height: 40px;
                 vertical-align: middle;
-
                 svg {
                     vertical-align: middle;
                     padding-left: 10px;
@@ -321,13 +361,11 @@ h1 {
 
 .newsletter {
 
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
+    width: calc(100% - $side-margin-total);
+    margin: 150px $side-margin 100px $side-margin;
+
     height: fit-content;
 
-    margin-top: 150px;
-    margin-bottom: 100px;
     background-color: var(--card-background);
 
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
@@ -368,21 +406,10 @@ h1 {
         }
     }
 
-    .__heading {
-
-        font-weight: 600;
-        font-size: 1.5em;
-        line-height: 2em;
+    &__heading {
+        padding-bottom: 20px;
         margin: 0px;
-        padding-bottom: 10px;
-        
-        color: var(--font-primary);
-
-        @include large-phones {
-            font-size: 1.9em;
-            line-height: 2.5em;
-            padding-bottom: 18px;
-        }
+        text-align: center;
     }
     
 
@@ -528,39 +555,34 @@ h1 {
 
 }
 
-.navigation__padding {
+.header__padding {
     width: 100%;
-    height: 0px;
-
-    &.--active {
-        height: 59px;
-    }
+    height: 64px;
 }
 
 .header {
     justify-content: center;
 
+    position: fixed;
+    top: 0;
+
     z-index: 9999;
     width: 100%;
-    border-bottom: 1px solid transparent;
-    transition: border-bottom ease-in 200ms, backdrop-filter ease-in 200ms;
 
-    &.sticky {
-
-        position: fixed;
-        top: 0;
-        backdrop-filter: blur(5px);
-
-
-        background-color: rgba(var(--background), 0.7);
-        width: 100%;
-        align-self: center;
+    &.--active {
+        backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--border);
     }
+
+    &.--open {
+        @extend .--active;
+    }
+    
 }
 
 .header__content {
 
+    flex-wrap: wrap;
     width: 100%;
     max-width: $content-width;
 
@@ -577,6 +599,20 @@ h1 {
     
     padding: 12px $content-padding 12px $content-padding;
 
+    ul {
+        padding: 0px;
+        margin: 0px;
+        gap: 30px;
+
+        li {
+            list-style-type: none;
+            a {
+                text-decoration: none;
+                font-style: normal;
+                color: inherit;
+            }
+        }
+    }
 }
 
 .toggle-switch {
@@ -648,20 +684,6 @@ h1 {
 
 .navigation {
     
-    ul {
-        padding: 0px;
-        margin: 0px;
-        gap: 30px;
-
-        li {
-            list-style-type: none;
-            a {
-                text-decoration: none;
-                color: inherit;
-            }
-        }
-    }
-
     #nav-button {
 
         vertical-align: middle;
@@ -679,56 +701,32 @@ h1 {
         }
     }
 
-    .navigation-tray {
+}
 
-        transition: max-height ease-in-out 500ms,
-                    padding ease-in-out 500ms;
+.navigation-tray {
 
-        overflow: hidden;
-        max-height: 0px;
-        padding: 0px;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    z-index: 10;
 
-        &.entered {
-            max-height: 1000px;
-            padding: 40px;
-        }
-
-        &.exited {
-            max-height: 0px;
-        }
-
-        display: flex;
-        justify-content: center;
-
-        background-color: var(--background);
-        box-shadow: 0px 50px 40px 0px rgba(0, 0, 0, 0.1);
-        border-bottom: 1px solid var(--foreground);
-
-        position: absolute;
-        box-sizing: border-box;
-        top: 70px;
-        left: 0px;
-        width: 100%;
-        z-index: 10;
-
-        ul {
-            width: fit-content;
-            align-items: center;
-            flex-direction: column;
-        }
+    ul {
+        width: fit-content;
+        align-items: center;
+        flex-direction: column;
     }
-
 }
 
 .page {
 
     min-height: 100vh;
     max-height: fit-content;
-    width: 100%;
 
     .content {
 
-        padding: 30px;
+        // padding: 30px;
         box-sizing: border-box;
 
         
@@ -745,14 +743,9 @@ h1 {
             display: flex;
             flex-direction: column;
             gap: 30px;
-            
-            .__heading {
-                font-size: 1.6em;
 
-                @include portrait-phones {
-                    font-size: 2em;
-                }
-            }
+            width: calc(100% - $side-margin-total);
+            margin: 0px $side-margin 0px $side-margin;
 
             .__all-button {
                 @include arrow-button(var(--font-primary));
@@ -809,30 +802,32 @@ h1 {
     flex-direction: column;
     width: 100%;
     height: fit-content;
-    gap: 20px;
 }
 
 .all-articles {
 
-    .__heading {
+    width: calc(100% - $side-margin-total);
+    margin: 50px $side-margin 50px $side-margin;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    &__heading {
         font-size: 2.5em;
         line-height: 2.5em;
         align-self: center;
         font-weight: 600;
     }
 
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-
-    .__year {
+    &__year {
         margin: 0px;
         font-size: 2em;
-        font-weight: 600;
     }
 
 }
 
+// Not needed
 .brief-post-card {
     @extend .article;
     gap: 10px;
@@ -883,32 +878,42 @@ h1 {
 
 .post {
 
-    .__title {
-        font-weight: 600;
-        font-size: 2.5em;
-        line-height: 1.5em;
-        padding: 0px 0px 20px 0px;
-        margin: 0px;
-    }
+    &__front {
 
-    .__description {
-        margin: 0px;
-        padding: 0px 0px 20px 0px;
-        font-size: 1.1em;
-    }
+        width: calc(100% - $side-margin-total);
+        margin: 50px $side-margin 50px $side-margin;
 
-    .__date {
-        margin: 0px;
-        padding: 0px 0px 50px 0px;
-        font-size: 1.1em;
-        span {
+        @include portrait-phones {
+            width: calc(100% - ($side-margin-total + 60px * 2));
+            margin: 50px calc($side-margin + 60px) 50px calc($side-margin + 60px);
+        }
+
+        &__title {
             font-weight: 600;
-            color: var(--accent);
+            font-size: 2.5em;
+            line-height: 1.5em;
+            margin: 0px 0px 20px 0px;
+        }
+    
+        &__description {
+            margin: 0px 0px 20px 0px;
+            font-size: 1.1em;
+        }
+    
+        &__date {
+            margin: 0px;
+            font-size: 1.1em;
+
+            span {
+                font-weight: 600;
+                color: var(--accent);
+            }
         }
     }
 
-    .__content {
+    &__content {
         background-color: var(--card-background);
+        box-sizing: border-box;
         padding: 30px;
         border-radius: 40px;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
@@ -917,39 +922,20 @@ h1 {
             padding: 60px;
         }
 
-        a {
-            color: var(--accent);
-            font-style: italic;
-            font-weight: 500;
-        }
-    
         p {
             word-wrap:break-word;
             width: 100%;
             white-space: normal;
-            font-size: 1.1em;
-            line-height: 1.8em;
         }
 
-        h1 {
-            font-size: 2em;
-            line-height: 2.5em;
+        width: 100%;
+        margin: 0px;
+
+        @include portrait-phones {
+            width: calc(100% - $side-margin-total);
+            margin: 0px $side-margin 0px $side-margin;
         }
 
-        h2 {
-            font-size: 1.8em;
-            line-height: 2.5em;
-        }
-    
-        h3 {
-            font-size: 1.6em;
-            line-height: 2.2em;
-        }
-    
-        h4 {
-            font-size: 1.4em;
-            line-height: 2em;
-        }
     }  
 }
 
@@ -958,81 +944,66 @@ h1 {
     flex-direction: column;
     gap: 30px;
 
+    width: calc(100% - $side-margin-total);
+    margin: 0px $side-margin 0px $side-margin;
+
     .__heading {
         margin: 0px;
         padding: 60px 0px 10px 0px;
     }
-}
 
-.related-post-card {
+    &__card {
 
-    @extend .article;
-    cursor: pointer;
+        @extend .article;
+        cursor: pointer;
+        
+        width: auto;
     
-    width: auto;
-
-    background-color: var(--card-background);
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    padding: 30px 30px 30px 30px;
-    border-radius: 45px;
-
-    @include large-phones {
-        padding: 40px;
-    }
-
-    .__text {
-
-        h2 {
-            margin: 0px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            font-size: 1.5em;
-            line-height: 1.5em;
-            font-weight: 600;
-
-            @include large-phones {
-                font-size: 1.8em;
-                line-height: 1.5em;
-            }
-
-            @include portrait-phones {
-                line-height: 2.5em;
-            }
+        background-color: var(--card-background);
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        padding: 30px 30px 30px 30px;
+        border-radius: 40px;
+    
+        @include large-phones {
+            padding: 40px;
         }
 
-        p {
+        &__description {
             margin: 0px;
-            font-size: 1em;
-            line-height: 1.5em;
-
-            @include portrait-phones {
-                font-size: 1.1em;
-            }
         }
+        
     }
-    
 }
+
+
 
 .about__heading {
     font-size: 2.5em;
     line-height: 2.5em;
     text-align: center;
     font-weight: 600;
+
+    margin-left: $side-margin;
+    margin-right: $side-margin;
 }
 
-.about-content {
+.about__content {
+
+    width: calc(100% - $side-margin-total);
+    margin: 0px $side-margin 0px $side-margin;
+
     display: flex;
     flex-direction: column;
     gap: 50px;
 
+    box-sizing: border-box;
+    background-color: var(--card-background);
+    border-radius: 40px;
+    padding: 40px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 
-    .__card {
+    &__card {
         width: 100%;
-        box-sizing: border-box;
-        background-color: var(--card-background);
-        border-radius: 40px;
-        padding: 40px;
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 
         @include tablets {
             width: 50%;
