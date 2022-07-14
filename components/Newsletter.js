@@ -47,6 +47,8 @@ export default function Newsletter() {
         <h3 className="__message"> Subscribe to my newsletter to receive notifications when new articles are released! </h3>
 
         <form onSubmit={(e) => {e.preventDefault(); subscribe(email);}}>
+
+            <label className="invisible-label" htmlFor="input"> email </label>
             <div className="__email-container">
               <Email className='__email-icon'/>
               <input required id="input" type="email" value={email}

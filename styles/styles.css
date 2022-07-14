@@ -19,7 +19,7 @@
   --font-primary: rgb(245, 245, 245);
   --font-secondary: rgb(224, 224, 224);
   --newsletter-container: #2b3a49;
-  --accent: #3191EA;
+  --accent: #6ab7ff;
   --card-background: rgba(52, 61, 71, 0.8);
   --opaque-background: rgba(38, 46, 54, 0.25);
   --border: rgba(249, 249, 249, 0.3);
@@ -90,6 +90,17 @@ a {
 
 b {
   font-weight: 600;
+}
+
+.invisible-label {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 .flex {
