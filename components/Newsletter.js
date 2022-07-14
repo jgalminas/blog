@@ -5,7 +5,7 @@ export default function Newsletter() {
 
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState();
+  const [errorMessage, setErrorMessage] = useState("");
   const [button, setButton] = useState({ value:'Subscribe', class: '' });
   
   async function subscribe(email) {
@@ -57,9 +57,7 @@ export default function Newsletter() {
             <input disabled={loading} className={button.class} id="button" type="submit" value={button.value}/>
         </form>
 
-        {errorMessage &&
-          <p align="middle" className="__error-message"> {errorMessage} </p>
-        }
+        <p align="middle" className="__error-message"> { errorMessage } </p>
 
         </div>
 

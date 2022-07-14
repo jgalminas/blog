@@ -351,6 +351,7 @@ b {
   }
 }
 .newsletter .__error-message {
+  height: 25px;
   margin: 0px;
   padding: 20px 0px 0px 0px;
   color: rgb(247, 19, 19);
