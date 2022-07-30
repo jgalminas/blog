@@ -26,7 +26,7 @@ export default function Home({ posts }) {
 
         <div className='__text'>
           <h1> Learn Software Development With Me </h1>
-          <h2> Welcome to my blog! Here I write about my experience in the software development space. </h2>
+          <h2> Welcome to my blog! Here I write about my experience in software development as I learn and discover new things. </h2>
 
           <div className='__buttons'>
             <p className='__start-reading'> Start Reading <Mouse/> </p>
