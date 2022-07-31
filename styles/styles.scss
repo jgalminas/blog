@@ -18,7 +18,7 @@ $side-margin-total: $side-margin * 2;
     // default theme
     --background: #F3F3F3;
     --foreground: rgb(51, 51, 51);
-    --font-primary: #1C1852;
+    --font-primary: #14123d;
     --font-secondary: #4F5D79;
     --newsletter-container: #2b3a49;
     --accent: #5431E2;
@@ -179,9 +179,8 @@ b {
 
 .__big-circle {
     position: absolute;
-    // transition: ease-in 100ms;
-    display: inline-block;
 
+    filter: blur(80px);
     width: 45%;
     padding-bottom: 45%;
 
@@ -197,6 +196,7 @@ b {
 .__medium-circle {
 
     position: absolute;
+    filter: blur(50px);
 
     width: 26%;
     padding-bottom: 26%;
@@ -213,6 +213,7 @@ b {
 
 .__small-circle {
     position: absolute;
+    filter: blur(30px);
 
     width: 20%;
     padding-bottom: 20%;
