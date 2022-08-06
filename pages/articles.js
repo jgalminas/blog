@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { Fragment } from 'react';
 import { getPostsByYear } from '../utils/mdxUtil';
-import RelatedPost from '../components/RelatedPost.js';
+import Article from '../components/Article.js';
 import Newsletter from '../components/Newsletter.js';
 
 
@@ -29,7 +29,7 @@ export default function Articles({ posts }) {
               return (
                 <Fragment key={key + index}>
                 {index === 0 ? <h2 className='all-articles__year' key={key}> {key} </h2> : null}
-                <RelatedPost key={post.slig} post={post}/>
+                <Article key={post.slig} post={post}/>
                 </Fragment>
               )
             })

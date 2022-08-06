@@ -6,8 +6,7 @@ import { MDXRemote } from 'next-mdx-remote'
 import { readFileSync } from 'fs';
 import path from 'path';
 import { getFormattedDate } from '../../utils/time.js';
-import Image from 'next/image';
-import RelatedPost from '../../components/RelatedPost.js';
+import Article from '../../components/Article.js';
 import Newsletter from '../../components/Newsletter.js';
 
 import dynamic from 'next/dynamic';
@@ -56,10 +55,10 @@ export default function Post({ content, relatedPosts, error }) {
               <div className='related-posts'>
               
 
-                  <h1 className='__heading'> Related Articles </h1>
+                  <h1 className='related-posts__heading'> Related Articles </h1>
 
                   {relatedPosts.map((post) => {
-                      return <RelatedPost key={post.slug} post={post}></RelatedPost>
+                      return <Article key={post.slug} post={post}/>
                   })}
               </div>
             }

@@ -1,11 +1,9 @@
 import Head from 'next/head';
 import { Fragment } from 'react';
 import { getPostsByDate } from '../utils/mdxUtil.js';
-import RelatedPost from '../components/RelatedPost.js';
+import Article from '../components/Article.js';
 import Newsletter from '../components/Newsletter.js';
 import Link from 'next/link';
-import Image from 'next/image.js';
-import Hero from '../public/hero.svg';
 import Arrow from '../public/arrow.svg';
 import Mouse from '../public/mouse.svg';
 
@@ -24,18 +22,18 @@ export default function Home({ posts }) {
 
       <div className='hero'>
 
-        <div className='__text'>
-          <h1> Learn Software Development With Me </h1>
+        <div className='hero__text'>
+          <h1 className=''> Learn Software Development With Me </h1>
           <h2> Welcome to my blog! Here I write about my experience in software development as I learn and discover new things. </h2>
 
-          <div className='__buttons'>
-            <p className='__start-reading'> Start Reading <Mouse/> </p>
-            <Link href="/about"><a className='__about-me'> About me <Arrow/> </a></Link>
+          <div className='hero__text__buttons'>
+            <p className='hero__text__buttons__start-reading'> Start Reading <Mouse/> </p>
+            <Link href="/about"><a className='hero__text__buttons__about-me'> About me <Arrow/> </a></Link>
           </div>
 
-          <div className='__big-circle'></div>
-          <div className='__medium-circle'></div>
-          <div className='__small-circle'></div>
+          <div className='big-circle'></div>
+          <div className='medium-circle'></div>
+          <div className='small-circle'></div>
 
         </div>
 
@@ -48,7 +46,7 @@ export default function Home({ posts }) {
         <h2 className='__heading'> Recent Articles </h2>
 
         {posts.map((post) => {
-          return <RelatedPost key={post.slug} post={post}/>
+          return <Article key={post.slug} post={post}/>
         })}
 
       <Link href="/articles"><a className='__all-button'> All Articles <Arrow/> </a></Link>

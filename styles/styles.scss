@@ -177,7 +177,7 @@ b {
     flex-direction: row;
 }
 
-.__big-circle {
+.big-circle {
     position: absolute;
 
     filter: blur(80px);
@@ -193,7 +193,7 @@ b {
     z-index: -1;
 }
 
-.__medium-circle {
+.medium-circle {
 
     position: absolute;
     filter: blur(50px);
@@ -211,7 +211,7 @@ b {
     z-index: -1;
 }
 
-.__small-circle {
+.small-circle {
     position: absolute;
     filter: blur(30px);
 
@@ -242,10 +242,7 @@ b {
     position: relative;
     justify-content: center;
 
-
-
-
-    .__text {
+    &__text {
 
         position: relative;
 
@@ -316,7 +313,7 @@ b {
 
         }
 
-        .__buttons {
+        &__buttons {
 
             display: flex;
             flex-direction: column;
@@ -331,7 +328,7 @@ b {
                 gap: 100px;
             }
 
-            .__start-reading {
+            &__start-reading {
                 order: 1;
                 margin: 0px;
                 font-size: 1em;
@@ -360,7 +357,7 @@ b {
 
             }
 
-            .__about-me {
+            &__about-me {
                 @include arrow-button(var(--font-secondary));
             }
 
@@ -385,26 +382,26 @@ b {
 
     position: relative;
 
-    .__big-circle {
+    .big-circle {
         top: 40%;
         left: 86%;
     }
 
-    .__medium-circle {
+    .medium-circle {
         width: 35%;
         padding-bottom: 35%;
         top: 85%;
         left: 5%;
     }
 
-    .__small-circle {
+    .small-circle {
         top: 2%;
         left: 16%;
         z-index: 1;
         background: linear-gradient(149.11deg, #3191EA 12.1%, var(--card-background) 91.23%);
     }
 
-    .__container {
+    &__container {
         display: flex;
         flex-direction: column;
         padding: 30px 20px 30px 20px;
@@ -425,7 +422,7 @@ b {
     }
     
 
-    .__message {
+    &__message {
         align-self: center;
 
         font-weight: 400;
@@ -450,7 +447,7 @@ b {
 
     }
 
-    .__error-message {
+    &__error-message {
         height: 25px;
         margin: 0px;
         padding: 20px 0px 0px 0px;
@@ -507,14 +504,14 @@ b {
         }
 
 
-        .__email-container {
+        .email-container {
             flex-grow: 1;
             max-width: 600px;
             min-width: 75%;
             position: relative;
         }
 
-        .__email-icon {
+        .email-icon {
             position: absolute;
             left: 13px;
             top: 13px;
@@ -960,7 +957,7 @@ b {
     width: calc(100% - $side-margin-total);
     margin: 0px $side-margin 0px $side-margin;
 
-    .__heading {
+    &__heading {
         margin: 0px;
         padding: 60px 0px 10px 0px;
     }
@@ -1050,7 +1047,7 @@ b {
     
     text-align: center;
 
-    #copyright {
+    &__text {
         margin: 0px;
         font-size: 16px;
     }

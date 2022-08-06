@@ -115,7 +115,7 @@ b {
   flex-direction: row;
 }
 
-.__big-circle {
+.big-circle {
   position: absolute;
   filter: blur(80px);
   width: 45%;
@@ -128,7 +128,7 @@ b {
   z-index: -1;
 }
 
-.__medium-circle {
+.medium-circle {
   position: absolute;
   filter: blur(50px);
   width: 26%;
@@ -141,7 +141,7 @@ b {
   z-index: -1;
 }
 
-.__small-circle {
+.small-circle {
   position: absolute;
   filter: blur(30px);
   width: 20%;
@@ -164,7 +164,7 @@ b {
   position: relative;
   justify-content: center;
 }
-.hero .__text {
+.hero__text {
   position: relative;
   width: 100%;
   display: flex;
@@ -173,7 +173,7 @@ b {
   text-align: center;
   gap: 40px;
 }
-.hero .__text h1 {
+.hero__text h1 {
   width: 100%;
   font-size: 1.9em;
   line-height: 1.5em;
@@ -182,24 +182,24 @@ b {
   font-weight: 700;
 }
 @media screen and (min-width: 425px) {
-  .hero .__text h1 {
+  .hero__text h1 {
     font-size: 2.5em;
     width: 90%;
     font-weight: 600;
   }
 }
 @media screen and (min-width: 668px) {
-  .hero .__text h1 {
+  .hero__text h1 {
     font-size: 3em;
     width: 80%;
   }
 }
 @media screen and (min-width: 768px) {
-  .hero .__text h1 {
+  .hero__text h1 {
     font-size: 4em;
   }
 }
-.hero .__text h2 {
+.hero__text h2 {
   width: 100%;
   font-weight: 400;
   color: var(--font-secondary);
@@ -208,13 +208,13 @@ b {
   line-height: 1.5em;
 }
 @media screen and (min-width: 425px) {
-  .hero .__text h2 {
+  .hero__text h2 {
     width: 80%;
     line-height: 2em;
   }
 }
 @media screen and (min-width: 668px) {
-  .hero .__text h2 {
+  .hero__text h2 {
     font-size: 1.5em;
     width: 60%;
   }
@@ -235,23 +235,23 @@ b {
     transform: translateY(6px);
   }
 }
-.hero .__text .__buttons {
+.hero__text__buttons {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 @media screen and (min-width: 425px) {
-  .hero .__text .__buttons {
+  .hero__text__buttons {
     flex-direction: row;
     gap: 50px;
   }
 }
 @media screen and (min-width: 668px) {
-  .hero .__text .__buttons {
+  .hero__text__buttons {
     gap: 100px;
   }
 }
-.hero .__text .__buttons .__start-reading {
+.hero__text__buttons__start-reading {
   order: 1;
   margin: 0px;
   font-size: 1em;
@@ -260,25 +260,25 @@ b {
   line-height: 40px;
   vertical-align: middle;
 }
-.hero .__text .__buttons .__start-reading svg {
+.hero__text__buttons__start-reading svg {
   vertical-align: middle;
   padding-left: 10px;
 }
-.hero .__text .__buttons .__start-reading svg .mouse_svg__outer {
+.hero__text__buttons__start-reading svg .mouse_svg__outer {
   stroke: var(--accent);
   stroke-width: 2px;
 }
-.hero .__text .__buttons .__start-reading svg .mouse_svg__wheel {
+.hero__text__buttons__start-reading svg .mouse_svg__wheel {
   fill: var(--accent);
   -webkit-animation: 1500ms mouse_svg_animation infinite;
           animation: 1500ms mouse_svg_animation infinite;
 }
 @media screen and (min-width: 425px) {
-  .hero .__text .__buttons .__start-reading {
+  .hero__text__buttons__start-reading {
     order: 0;
   }
 }
-.hero .__text .__buttons .__about-me {
+.hero__text__buttons__about-me {
   font-size: 1em;
   font-weight: 500;
   line-height: 40px;
@@ -287,7 +287,7 @@ b {
   text-decoration: none;
   color: var(--font-secondary);
 }
-.hero .__text .__buttons .__about-me svg {
+.hero__text__buttons__about-me svg {
   vertical-align: middle;
   padding-left: 10px;
   fill: var(--font-secondary);
@@ -304,34 +304,34 @@ b {
   border-radius: 40px;
   position: relative;
 }
-.newsletter .__big-circle {
+.newsletter .big-circle {
   top: 40%;
   left: 86%;
 }
-.newsletter .__medium-circle {
+.newsletter .medium-circle {
   width: 35%;
   padding-bottom: 35%;
   top: 85%;
   left: 5%;
 }
-.newsletter .__small-circle {
+.newsletter .small-circle {
   top: 2%;
   left: 16%;
   z-index: 1;
   background: linear-gradient(149.11deg, #3191EA 12.1%, var(--card-background) 91.23%);
 }
-.newsletter .__container {
+.newsletter__container {
   display: flex;
   flex-direction: column;
   padding: 30px 20px 30px 20px;
 }
 @media screen and (min-width: 425px) {
-  .newsletter .__container {
+  .newsletter__container {
     padding: 65px 40px 65px 40px;
   }
 }
 @media screen and (min-width: 768px) {
-  .newsletter .__container {
+  .newsletter__container {
     padding: 65px 100px 65px 100px;
   }
 }
@@ -340,7 +340,7 @@ b {
   margin: 0px;
   text-align: center;
 }
-.newsletter .__message {
+.newsletter__message {
   align-self: center;
   font-weight: 400;
   font-size: 1em;
@@ -351,19 +351,19 @@ b {
   color: var(--font-secondary);
 }
 @media screen and (min-width: 425px) {
-  .newsletter .__message {
+  .newsletter__message {
     font-size: 1.2em;
     line-height: 1.8em;
   }
 }
 @media screen and (min-width: 668px) {
-  .newsletter .__message {
+  .newsletter__message {
     font-size: 1.4em;
     line-height: 2em;
     padding-bottom: 64px;
   }
 }
-.newsletter .__error-message {
+.newsletter__error-message {
   height: 25px;
   margin: 0px;
   padding: 20px 0px 0px 0px;
@@ -411,19 +411,19 @@ b {
 .newsletter form #button.success {
   background-color: #41bb66;
 }
-.newsletter form .__email-container {
+.newsletter form .email-container {
   flex-grow: 1;
   max-width: 600px;
   min-width: 75%;
   position: relative;
 }
-.newsletter form .__email-icon {
+.newsletter form .email-icon {
   position: absolute;
   left: 13px;
   top: 13px;
 }
 @media screen and (min-width: 668px) {
-  .newsletter form .__email-icon {
+  .newsletter form .email-icon {
     left: 18px;
     top: 18px;
   }
@@ -777,7 +777,7 @@ b {
   width: calc(100% - 60px);
   margin: 0px 30px 0px 30px;
 }
-.related-posts .__heading {
+.related-posts__heading {
   margin: 0px;
   padding: 60px 0px 10px 0px;
 }
@@ -850,7 +850,7 @@ b {
   max-width: 1024px;
   text-align: center;
 }
-.footer #copyright {
+.footer__text {
   margin: 0px;
   font-size: 16px;
 }

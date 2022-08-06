@@ -48,7 +48,6 @@ export default function Header() {
                     </Link>
 
                     <div id='nav-wrapper'>
-
                         <Navigation headerRef={headerRef}/>
                         <ToggleInput value={current} onChange={() => setCurrent(!current)}/>
                     </div>

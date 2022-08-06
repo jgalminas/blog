@@ -36,21 +36,21 @@ export default function Newsletter() {
   return (
     <div className="newsletter">
         
-          <div className='__big-circle'></div>
-          <div className='__medium-circle'></div>
-          <div className='__small-circle'></div>
+          <div className='big-circle'></div>
+          <div className='medium-circle'></div>
+          <div className='small-circle'></div>
 
-        <div className="__container">
+        <div className="newsletter__container">
 
         <h2 className="newsletter__heading"> Newsletter </h2>
 
-        <h3 className="__message"> Subscribe to my newsletter to receive notifications when new articles are released! </h3>
+        <h3 className="newsletter__message"> Subscribe to my newsletter to receive notifications when new articles are released! </h3>
 
         <form onSubmit={(e) => {e.preventDefault(); subscribe(email);}}>
 
             <label className="invisible-label" htmlFor="input"> email </label>
-            <div className="__email-container">
-              <Email className='__email-icon'/>
+            <div className="email-container">
+              <Email className='email-icon'/>
               <input required id="input" type="email" value={email}
               onChange={(e) => { setEmail(e.target.value); setButton({value:'Subscribe', class: ''}) }}
               />
@@ -59,7 +59,7 @@ export default function Newsletter() {
             <input disabled={loading} className={button.class} id="button" type="submit" value={button.value}/>
         </form>
 
-        <p align="middle" className="__error-message"> { errorMessage } </p>
+        <p align="middle" className="newsletter__error-message"> { errorMessage } </p>
 
         </div>
 
