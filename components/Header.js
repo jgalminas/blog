@@ -8,9 +8,10 @@ import Logo from '../public/logo.svg';
 export default function Header() {
 
     const { theme , setTheme } = useTheme();
-    const [current, setCurrent] = useState(theme == 'dark' ? true : false);
+    const [current, setCurrent] = useState(theme === 'dark' ? true : false);
     const headerRef = useRef();
 
+    // header scroll
     useEffect(() => {
 
         window.addEventListener('scroll', () => {
