@@ -180,7 +180,7 @@ b {
 .big-circle {
     position: absolute;
 
-    filter: blur(80px);
+    filter: blur(40px);
     width: 45%;
     padding-bottom: 45%;
 
@@ -191,12 +191,16 @@ b {
     border-radius: 100vw;
     background: linear-gradient(146.84deg, #5431E2 14.08%, var(--opaque-background) 84.73%);
     z-index: -1;
+
+    @include tablets {
+        filter: blur(80px);
+    }
 }
 
 .medium-circle {
 
     position: absolute;
-    filter: blur(50px);
+    filter: blur(25px);
 
     width: 26%;
     padding-bottom: 26%;
@@ -209,11 +213,15 @@ b {
     
     background: linear-gradient(146.84deg, #FFB6B6 14.08%, var(--opaque-background) 84.73%);
     z-index: -1;
+
+    @include tablets {
+        filter: blur(50px);
+    }
 }
 
 .small-circle {
     position: absolute;
-    filter: blur(30px);
+    filter: blur(15px);
 
     width: 20%;
     padding-bottom: 20%;
@@ -226,6 +234,10 @@ b {
 
     background: linear-gradient(149.11deg, #3191EA 14.08%, var(--opaque-background) 84.73%);
     z-index: -1;
+
+    @include tablets {
+        filter: blur(30px);
+    }
 }
 
 .hero {
