@@ -13,25 +13,30 @@ export default function Newsletter() {
     setLoading(true);
     setButton({value: 'Loading..', class: 'loading'});
 
+    try {
+
     const res = await fetch('/api/subscribe', {
       method: 'POST',
       body: JSON.stringify({ email: email.trim() })
     })
-
+    
     const data = await res.json();
-
-    data && setLoading(false);
 
     if (res.ok) {
       setButton({value:'Subscribed!', class: 'success'});
     } else if (data.code === 'duplicate_parameter') {
       setButton({value:'Subscribe', class: ''});
       setErrorMessage('This email is already subscribed.');
-    } else {
-      setButton({value:'Subscribe', class: ''});
-      setErrorMessage('An error occured, please try again.');
     }
+
+  } catch(err) {
+    setButton({value:'Subscribe', class: ''});
+    setErrorMessage('An error occured, please try again.');
   }
+
+  setLoading(false);
+
+}
 
   return (
     <div className="newsletter">
@@ -52,7 +57,7 @@ export default function Newsletter() {
             <div className="email-container">
               <Email className='email-icon'/>
               <input required id="input" type="email" value={email}
-              onChange={(e) => { setEmail(e.target.value); setButton({value:'Subscribe', class: ''}) }}
+              onChange={(e) => { setEmail(e.target.value); setButton({value:'Subscribe', class: ''}); setErrorMessage("")}}
               />
             </div>
 

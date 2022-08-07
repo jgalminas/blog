@@ -23,7 +23,7 @@ export default async (req, res) => {
 
       } catch(err) {
 
-        res.status(400).json(err.response.data);
+        res.status(400).json(err.response?.data);
 
       }
     } else if (!email) {
