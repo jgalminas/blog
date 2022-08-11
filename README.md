@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personal Blog Website
 
-## Getting Started
+## 💡 Background 
 
-First, run the development server:
+I am quite keen and always want to learn new things and I have noticed that I learn mutch better if I can effectively
+explain what I am learning about. So I thought it would be a good idea to create a blog where I can share my experience
+as I am learning and discovering new things. This way I have everything accessible on the web and who knows it might 
+also help somebody out there, which is always great 😊!
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## ✨ Features
+Here is what the website currently includes:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+✅ Ability to subscribe to a newsletter <br>
+✅ Get related article recommendations based on currently accessed article <br>
+✅ Ability to switch between dark and light mode <br>
+✅ Ability to have interactive components inside articles
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## ⚙️ Project Structure
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+I built this blog using Next.js. Utilising this incredible framework I was able to quickly build this page using
+static site generation for incredible performance 🔥 and great search engine optimisation. Articles are written in MDX — a
+superset of Markdown which allows the use of React components inside Markdown pages (how awesome is that?). During build 
+time the content is parsed into HTML where Next.js generatates it into pages.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+I quite like the minimalist approach when it comes to design so I decided to use custom CSS throughout the page with
+the help of SASS to keep all neat and well structured!
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 🔧 Tools
+- NEXT.js + React
+- MDX
+- SASS
