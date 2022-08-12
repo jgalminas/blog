@@ -26,6 +26,6 @@ I quite like the minimalist approach when it comes to design so I decided to use
 the help of SASS to keep all neat and well structured!
 
 ### 🔧 Tools
-- NEXT.js + React
+- Next.js + React
 - MDX
 - SASS
